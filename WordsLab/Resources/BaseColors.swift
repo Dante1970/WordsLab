@@ -26,6 +26,7 @@ class BaseColors {
         gradient.endPoint = CGPoint(x: 1, y: 1)
         gradient.colors = [lightBlue.cgColor, blue.cgColor]
         gradient.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
+        view.layer.insertSublayer(gradient, at: 0)
         return gradient
     }
 }

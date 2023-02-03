@@ -13,6 +13,7 @@
 		BE240E642988268D0001F4B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE240E632988268D0001F4B7 /* Assets.xcassets */; };
 		BE240E672988268D0001F4B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE240E652988268D0001F4B7 /* LaunchScreen.storyboard */; };
 		BE240E71298830540001F4B7 /* BaseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE240E70298830540001F4B7 /* BaseColors.swift */; };
+		BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		BE240E662988268D0001F4B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE240E682988268D0001F4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE240E70298830540001F4B7 /* BaseColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColors.swift; sourceTree = "<group>"; };
+		BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				BE240E5A2988268C0001F4B7 /* AppDelegate.swift */,
 				BE240E5C2988268C0001F4B7 /* SceneDelegate.swift */,
 				BE240E70298830540001F4B7 /* BaseColors.swift */,
+				BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */,
 				BE240E632988268D0001F4B7 /* Assets.xcassets */,
 				BE240E652988268D0001F4B7 /* LaunchScreen.storyboard */,
 			);
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */,
 				BE240E71298830540001F4B7 /* BaseColors.swift in Sources */,
 				BE240E5F2988268C0001F4B7 /* LoginViewController.swift in Sources */,
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
