@@ -14,6 +14,7 @@ extension UIView {
         let lightBlue = UIColor(named: "lightBlue")!
         let blue = UIColor(named: "blue")!
         
+        self.layoutIfNeeded()
         let gradient: CAGradientLayer = CAGradientLayer()
         gradient.frame = self.bounds
         gradient.colors = [lightBlue.cgColor, blue.cgColor]

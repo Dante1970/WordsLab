@@ -9,6 +9,21 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private lazy var contentSize = CGSize(width: view.frame.width, height: view.frame.height)
+    
+    private lazy var scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.frame = view.bounds
+        scrollView.contentSize = contentSize
+        return scrollView
+    }()
+    
+    private lazy var contentView: UIView = {
+        let contentView = UIView()
+        contentView.frame.size = contentSize
+        return contentView
+    }()
+    
     private let welcomeLabel: UILabel = {
        let label = UILabel()
         label.text = "Welcome Back,"
@@ -41,6 +56,7 @@ class LoginViewController: UIViewController {
         textField.layer.borderColor = BaseColors.gray?.cgColor
         textField.textColor = BaseColors.white
         textField.indent(size: 30)
+        textField.tag = 0
         return textField
     }()
     
@@ -54,6 +70,7 @@ class LoginViewController: UIViewController {
         textField.textColor = BaseColors.white
         textField.indent(size: 30)
         textField.isSecureTextEntry = true
+        textField.tag = 1
         return textField
     }()
     
@@ -174,13 +191,22 @@ class LoginViewController: UIViewController {
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
-//        button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return button
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        emailTF.delegate = self
+        passwordTF.delegate = self
         
         makeUI()
     }
@@ -189,65 +215,102 @@ class LoginViewController: UIViewController {
         self.loginButton.applyGradient()
     }
     
+    
+    
+    @objc private func kbDidShow(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + kbFrameSize.height)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbFrameSize.height - 34, right: 0)
+    }
+        
+    @objc private func kbDidHide() {
+        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    @objc private func hideKeyboard() {
+        self.view.endEditing(true)
+    }
+    
     private func makeUI() {
         view.backgroundColor = BaseColors.backgroundColor
         
-        view.addSubview(welcomeStackView)
-        view.addSubview(textFieldStackView)
-        view.addSubview(rememberMeStackView)
-        view.addSubview(whiteLine1)
-        view.addSubview(orLabel)
-        view.addSubview(whiteLine2)
-        view.addSubview(socialStackView)
-        view.addSubview(loginButton)
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
+
+        contentView.addSubview(welcomeStackView)
+        contentView.addSubview(textFieldStackView)
+        contentView.addSubview(rememberMeStackView)
+        contentView.addSubview(whiteLine1)
+        contentView.addSubview(orLabel)
+        contentView.addSubview(whiteLine2)
+        contentView.addSubview(socialStackView)
+        contentView.addSubview(loginButton)
         
         NSLayoutConstraint.activate([
-            welcomeStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            welcomeStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            welcomeStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+
+            welcomeStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            welcomeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            welcomeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             welcomeStackView.heightAnchor.constraint(equalToConstant: 100),
-            
+
             emailTF.heightAnchor.constraint(equalToConstant: 50),
-            
+
             passwordTF.heightAnchor.constraint(equalToConstant: 50),
-            
+
             textFieldStackView.topAnchor.constraint(lessThanOrEqualTo: welcomeStackView.bottomAnchor, constant: 80),
-            textFieldStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            textFieldStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+            textFieldStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            textFieldStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+
             rememberMeStackView.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 20),
-            rememberMeStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
-            rememberMeStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-            
+            rememberMeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            rememberMeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+
             whiteLine1.heightAnchor.constraint(equalToConstant: 2),
             whiteLine1.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
-            whiteLine1.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+            whiteLine1.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             whiteLine1.rightAnchor.constraint(equalTo: orLabel.leftAnchor, constant: -10),
-            
-            orLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            orLabel.topAnchor.constraint(equalTo: rememberMeStackView.bottomAnchor, constant: 80),
-            
+
+            orLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            orLabel.topAnchor.constraint(equalTo: rememberMeStackView.bottomAnchor, constant: 50),
+
             whiteLine2.heightAnchor.constraint(equalToConstant: 2),
             whiteLine2.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
             whiteLine2.leftAnchor.constraint(equalTo: orLabel.rightAnchor, constant: 10),
-            whiteLine2.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
-            
+            whiteLine2.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
+
             googleButton.heightAnchor.constraint(equalToConstant: 50),
             googleButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-            
+
             facebookButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor),
             facebookButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-            
+
             appleButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor),
             appleButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-            
+
             socialStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             socialStackView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20),
-            
+
+            loginButton.topAnchor.constraint(equalTo: socialStackView.bottomAnchor, constant: 80),
             loginButton.heightAnchor.constraint(equalToConstant: 60),
-            loginButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 40),
-            loginButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
-            loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35)
+            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -35)
         ])
+    }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        let nextTag = textField.tag + 1
+        
+        if let nextResponder = textField.superview?.viewWithTag(nextTag) {
+            nextResponder.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
+        
+        return true
     }
 }
