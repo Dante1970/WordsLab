@@ -9,6 +9,9 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private var iconClick = true
+//    private let imageIcon = UIImageView(image: UIImage(named: "closeeye"))
+    
     private lazy var contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     
     private lazy var scrollView: UIScrollView = {
@@ -194,20 +197,20 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return button
     }()
+    
+    private lazy var imageIcon: UIImageView = {
+       let image = UIImageView(image: UIImage(named: "closeeye"))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(tap)
+        
+        return image
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
-        
-        emailTF.delegate = self
-        passwordTF.delegate = self
-        
+
         makeUI()
     }
     
@@ -215,7 +218,19 @@ class LoginViewController: UIViewController {
         self.loginButton.applyGradient()
     }
     
-    
+    @objc private func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+        let tappedImage = tapGestureRecognizer.view as! UIImageView
+        
+        if iconClick {
+            iconClick = false
+            tappedImage.image = UIImage(named: "openeye")
+            passwordTF.isSecureTextEntry = false
+        } else {
+            iconClick = true
+            tappedImage.image = UIImage(named: "closeeye")
+            passwordTF.isSecureTextEntry = true
+        }
+    }
     
     @objc private func kbDidShow(notification: Notification) {
         guard let userInfo = notification.userInfo else { return }
@@ -234,6 +249,26 @@ class LoginViewController: UIViewController {
     }
     
     private func makeUI() {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
+        emailTF.delegate = self
+        passwordTF.delegate = self
+        
+        let eyeView = UIView()
+        eyeView.addSubview(imageIcon)
+        eyeView.frame = CGRect(x: 0, y: 0, width: (UIImage(named: "closeeye")!.size.width) + 25, height: UIImage(named: "closeeye")!.size.height + 10)
+        
+        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "closeeye")!.size.width + 15, height: UIImage(named: "closeeye")!.size.height + 10)
+        
+        passwordTF.rightView = eyeView
+        passwordTF.rightViewMode = .always
+        
         view.backgroundColor = BaseColors.backgroundColor
         
         view.addSubview(scrollView)
