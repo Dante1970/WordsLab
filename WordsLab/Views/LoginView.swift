@@ -1,29 +1,27 @@
 //
-//  LoginViewController.swift
+//  LoginView.swift
 //  WordsLab
 //
-//  Created by Сергей Белоусов on 03.02.2023.
+//  Created by Сергей Белоусов on 14.02.2023.
 //
 
+import Foundation
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginView: UIView {
     
     private var iconClick = true
-//    private let imageIcon = UIImageView(image: UIImage(named: "closeeye"))
-    
-    private lazy var contentSize = CGSize(width: view.frame.width, height: view.frame.height)
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.frame = view.bounds
-        scrollView.contentSize = contentSize
+        scrollView.frame = self.bounds
+        scrollView.contentSize = .zero
         return scrollView
     }()
     
     private lazy var contentView: UIView = {
         let contentView = UIView()
-        contentView.frame.size = contentSize
+        contentView.frame.size = .zero
         return contentView
     }()
     
@@ -83,6 +81,16 @@ class LoginViewController: UIViewController {
         stackView.axis = .vertical
         stackView.spacing = 40
         return stackView
+    }()
+    
+    private lazy var imageIcon: UIImageView = {
+       let image = UIImageView(image: UIImage(named: "closeeye"))
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        image.isUserInteractionEnabled = true
+        image.addGestureRecognizer(tap)
+        
+        return image
     }()
     
     private let switchUI: UISwitch = {
@@ -188,7 +196,7 @@ class LoginViewController: UIViewController {
         return stackView
     }()
     
-    private let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log In", for: .normal)
@@ -198,24 +206,52 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private lazy var imageIcon: UIImageView = {
-       let image = UIImageView(image: UIImage(named: "closeeye"))
+    // MARK: - layoutSubviews
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        image.isUserInteractionEnabled = true
-        image.addGestureRecognizer(tap)
+        let contentSize = CGSize(width: self.frame.width, height: self.frame.height)
         
-        return image
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        makeUI()
+        scrollView.frame = self.bounds
+        scrollView.contentSize = contentSize
+        contentView.frame.size = contentSize
+        
+        loginButton.applyGradient()
     }
     
-    override func viewDidLayoutSubviews() {
-        self.loginButton.applyGradient()
+    // MARK: - init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tap.cancelsTouchesInView = false
+        self.addGestureRecognizer(tap)
+        
+        makeUI()
+        setupConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func kbDidShow(notification: Notification) {
+        guard let userInfo = notification.userInfo else { return }
+        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        scrollView.contentSize = CGSize(width: self.bounds.size.width, height: self.bounds.size.height + kbFrameSize.height)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbFrameSize.height - 34, right: 0)
+    }
+        
+    @objc private func kbDidHide() {
+        scrollView.contentSize = CGSize(width: self.bounds.size.width, height: self.bounds.size.height)
+        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
+    
+    @objc private func hideKeyboard() {
+        self.endEditing(true)
     }
     
     @objc private func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -231,49 +267,18 @@ class LoginViewController: UIViewController {
             passwordTF.isSecureTextEntry = true
         }
     }
-    
-    @objc private func kbDidShow(notification: Notification) {
-        guard let userInfo = notification.userInfo else { return }
-        let kbFrameSize = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height + kbFrameSize.height)
-        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbFrameSize.height - 34, right: 0)
-    }
-        
-    @objc private func kbDidHide() {
-        scrollView.contentSize = CGSize(width: self.view.bounds.size.width, height: self.view.bounds.size.height)
-        scrollView.scrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    @objc private func hideKeyboard() {
-        self.view.endEditing(true)
-    }
-    
+
+    // MARK: - makeUI
     private func makeUI() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidShow), name: UIResponder.keyboardDidShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(kbDidHide), name: UIResponder.keyboardDidHideNotification, object: nil)
-        
-        let tap = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
-        tap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(tap)
+        self.backgroundColor = BaseColors.backgroundColor
         
         emailTF.delegate = self
         passwordTF.delegate = self
         
-        let eyeView = UIView()
-        eyeView.addSubview(imageIcon)
-        eyeView.frame = CGRect(x: 0, y: 0, width: (UIImage(named: "closeeye")!.size.width) + 25, height: UIImage(named: "closeeye")!.size.height + 10)
-        
-        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "closeeye")!.size.width + 15, height: UIImage(named: "closeeye")!.size.height + 10)
-        
-        passwordTF.rightView = eyeView
-        passwordTF.rightViewMode = .always
-        
-        view.backgroundColor = BaseColors.backgroundColor
-        
-        view.addSubview(scrollView)
+        self.addSubview(scrollView)
         scrollView.addSubview(contentView)
-
+        
         contentView.addSubview(welcomeStackView)
         contentView.addSubview(textFieldStackView)
         contentView.addSubview(rememberMeStackView)
@@ -283,13 +288,25 @@ class LoginViewController: UIViewController {
         contentView.addSubview(socialStackView)
         contentView.addSubview(loginButton)
         
+        let eyeView = UIView()
+        eyeView.addSubview(imageIcon)
+        eyeView.frame = CGRect(x: 0, y: 0, width: (UIImage(named: "closeeye")!.size.width) + 25, height: UIImage(named: "closeeye")!.size.height + 10)
+        
+        imageIcon.frame = CGRect(x: -10, y: 0, width: UIImage(named: "closeeye")!.size.width + 15, height: UIImage(named: "closeeye")!.size.height + 10)
+        
+        passwordTF.rightView = eyeView
+        passwordTF.rightViewMode = .always
+    }
+    
+    // MARK: - setupConstraints
+    private func setupConstraints() {
+        
         NSLayoutConstraint.activate([
-
-            welcomeStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
-            welcomeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            welcomeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+            welcomeStackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor),
+            welcomeStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            welcomeStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             welcomeStackView.heightAnchor.constraint(equalToConstant: 100),
-
+            
             emailTF.heightAnchor.constraint(equalToConstant: 50),
 
             passwordTF.heightAnchor.constraint(equalToConstant: 50),
@@ -297,36 +314,36 @@ class LoginViewController: UIViewController {
             textFieldStackView.topAnchor.constraint(lessThanOrEqualTo: welcomeStackView.bottomAnchor, constant: 80),
             textFieldStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             textFieldStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
-
+            
             rememberMeStackView.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 20),
             rememberMeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             rememberMeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-
+            
             whiteLine1.heightAnchor.constraint(equalToConstant: 2),
             whiteLine1.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
             whiteLine1.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             whiteLine1.rightAnchor.constraint(equalTo: orLabel.leftAnchor, constant: -10),
-
+            
             orLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             orLabel.topAnchor.constraint(equalTo: rememberMeStackView.bottomAnchor, constant: 50),
-
+            
             whiteLine2.heightAnchor.constraint(equalToConstant: 2),
             whiteLine2.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
             whiteLine2.leftAnchor.constraint(equalTo: orLabel.rightAnchor, constant: 10),
             whiteLine2.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20),
-
+            
             googleButton.heightAnchor.constraint(equalToConstant: 50),
             googleButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-
+            
             facebookButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor),
             facebookButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-
+            
             appleButton.heightAnchor.constraint(equalTo: googleButton.heightAnchor),
             appleButton.widthAnchor.constraint(equalTo: googleButton.heightAnchor),
-
-            socialStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            
+            socialStackView.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
             socialStackView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20),
-
+            
             loginButton.topAnchor.constraint(equalTo: socialStackView.bottomAnchor, constant: 80),
             loginButton.heightAnchor.constraint(equalToConstant: 60),
             loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
@@ -336,7 +353,8 @@ class LoginViewController: UIViewController {
     }
 }
 
-extension LoginViewController: UITextFieldDelegate {
+extension LoginView: UITextFieldDelegate {
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
         
