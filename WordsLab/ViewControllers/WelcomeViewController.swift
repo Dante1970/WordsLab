@@ -61,6 +61,7 @@ class WelcomeViewController: UIViewController {
         button.layer.cornerRadius = 20
         button.layer.borderWidth = 2
         button.layer.borderColor = BaseColors.gray?.cgColor
+        button.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
         return button
     }()
@@ -79,6 +80,10 @@ class WelcomeViewController: UIViewController {
     
     @objc private func loginButtonAction() {
         self.navigationController?.pushViewController(viewModel.loginViewController, animated: true)
+    }
+    
+    @objc private func signUpButtonAction() {
+        self.navigationController?.pushViewController(viewModel.signUpViewController, animated: true)
     }
     
     private func makeUI() {

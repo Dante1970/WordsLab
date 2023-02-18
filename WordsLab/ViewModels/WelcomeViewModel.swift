@@ -10,4 +10,5 @@ import Foundation
 class WelcomeViewModel {
     
     let loginViewController = LoginViewController()
+    let signUpViewController = SignUpViewController()
 }

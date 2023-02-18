@@ -14,9 +14,13 @@
 		BE240E672988268D0001F4B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE240E652988268D0001F4B7 /* LaunchScreen.storyboard */; };
 		BE240E71298830540001F4B7 /* BaseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE240E70298830540001F4B7 /* BaseColors.swift */; };
 		BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE50299BEE42006B1B36 /* LoginView.swift */; };
+		BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */; };
+		BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5629A0D143006B1B36 /* SignUpView.swift */; };
+		BE59FE5929A0E04D006B1B36 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE59FE5829A0E04D006B1B36 /* GoogleService-Info.plist */; };
 		BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */; };
 		BEB6DDBF298D766700B8A1B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */; };
 		BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */; };
+		C0D0424E1B1FE44D05D57191 /* Pods_WordsLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +33,15 @@
 		BE240E682988268D0001F4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE240E70298830540001F4B7 /* BaseColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColors.swift; sourceTree = "<group>"; };
 		BE59FE50299BEE42006B1B36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BE59FE5629A0D143006B1B36 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		BE59FE5829A0E04D006B1B36 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordsLab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordsLab.release.xcconfig"; path = "Target Support Files/Pods-WordsLab/Pods-WordsLab.release.xcconfig"; sourceTree = "<group>"; };
+		DB5331EF79E12F40E2865504 /* Pods-WordsLab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordsLab.debug.xcconfig"; path = "Target Support Files/Pods-WordsLab/Pods-WordsLab.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +49,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D0424E1B1FE44D05D57191 /* Pods_WordsLab.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21093D912236B87781B5854E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB5331EF79E12F40E2865504 /* Pods-WordsLab.debug.xcconfig */,
+				CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		4333E76B05635DBC3EAA1D51 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BE240E4E2988268C0001F4B7 = {
 			isa = PBXGroup;
 			children = (
 				BE240E592988268C0001F4B7 /* WordsLab */,
 				BE240E582988268C0001F4B7 /* Products */,
+				21093D912236B87781B5854E /* Pods */,
+				4333E76B05635DBC3EAA1D51 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -69,6 +100,7 @@
 				BEB6DDC2298D783700B8A1B5 /* ViewModels */,
 				BE240E6E298829FB0001F4B7 /* Resources */,
 				BE240E682988268D0001F4B7 /* Info.plist */,
+				BE59FE5829A0E04D006B1B36 /* GoogleService-Info.plist */,
 			);
 			path = WordsLab;
 			sourceTree = "<group>";
@@ -91,6 +123,7 @@
 			children = (
 				BE240E5E2988268C0001F4B7 /* WelcomeViewController.swift */,
 				BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */,
+				BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -99,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				BE59FE50299BEE42006B1B36 /* LoginView.swift */,
+				BE59FE5629A0D143006B1B36 /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -118,9 +152,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BE240E6B2988268D0001F4B7 /* Build configuration list for PBXNativeTarget "WordsLab" */;
 			buildPhases = (
+				83CB3E137A7285A48A155B0D /* [CP] Check Pods Manifest.lock */,
 				BE240E532988268C0001F4B7 /* Sources */,
 				BE240E542988268C0001F4B7 /* Frameworks */,
 				BE240E552988268C0001F4B7 /* Resources */,
+				F2125192E2219660F6C729EA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,11 +206,54 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE240E672988268D0001F4B7 /* LaunchScreen.storyboard in Resources */,
+				BE59FE5929A0E04D006B1B36 /* GoogleService-Info.plist in Resources */,
 				BE240E642988268D0001F4B7 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		83CB3E137A7285A48A155B0D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WordsLab-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F2125192E2219660F6C729EA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordsLab/Pods-WordsLab-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WordsLab/Pods-WordsLab-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WordsLab/Pods-WordsLab-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE240E532988268C0001F4B7 /* Sources */ = {
@@ -187,6 +266,8 @@
 				BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */,
 				BE240E5F2988268C0001F4B7 /* WelcomeViewController.swift in Sources */,
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
+				BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */,
+				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
 				BE240E5D2988268C0001F4B7 /* SceneDelegate.swift in Sources */,
 			);
@@ -256,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +391,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -322,6 +403,7 @@
 		};
 		BE240E6C2988268D0001F4B7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB5331EF79E12F40E2865504 /* Pods-WordsLab.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +432,7 @@
 		};
 		BE240E6D2988268D0001F4B7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

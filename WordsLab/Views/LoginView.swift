@@ -196,7 +196,7 @@ final class LoginView: UIView {
         return stackView
     }()
     
-    let loginButton: UIButton = {
+    private let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log In", for: .normal)
@@ -353,6 +353,7 @@ final class LoginView: UIView {
     }
 }
 
+// MARK: - extension
 extension LoginView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
