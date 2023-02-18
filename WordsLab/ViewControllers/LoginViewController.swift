@@ -15,6 +15,9 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    private func view() -> LoginView {
+        return self.view as! LoginView
     }
 }

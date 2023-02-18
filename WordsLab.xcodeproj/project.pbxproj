@@ -14,6 +14,8 @@
 		BE240E672988268D0001F4B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE240E652988268D0001F4B7 /* LaunchScreen.storyboard */; };
 		BE240E71298830540001F4B7 /* BaseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE240E70298830540001F4B7 /* BaseColors.swift */; };
 		BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE50299BEE42006B1B36 /* LoginView.swift */; };
+		BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */; };
+		BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5629A0D143006B1B36 /* SignUpView.swift */; };
 		BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */; };
 		BEB6DDBF298D766700B8A1B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */; };
 		BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */; };
@@ -29,6 +31,8 @@
 		BE240E682988268D0001F4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE240E70298830540001F4B7 /* BaseColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColors.swift; sourceTree = "<group>"; };
 		BE59FE50299BEE42006B1B36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BE59FE5629A0D143006B1B36 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			children = (
 				BE240E5E2988268C0001F4B7 /* WelcomeViewController.swift */,
 				BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */,
+				BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -99,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				BE59FE50299BEE42006B1B36 /* LoginView.swift */,
+				BE59FE5629A0D143006B1B36 /* SignUpView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +193,8 @@
 				BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */,
 				BE240E5F2988268C0001F4B7 /* WelcomeViewController.swift in Sources */,
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
+				BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */,
+				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
 				BE240E5D2988268C0001F4B7 /* SceneDelegate.swift in Sources */,
 			);

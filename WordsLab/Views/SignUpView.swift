@@ -1,14 +1,13 @@
 //
-//  LoginView.swift
+//  SignUpView.swift
 //  WordsLab
 //
-//  Created by Сергей Белоусов on 14.02.2023.
+//  Created by Сергей Белоусов on 18.02.2023.
 //
 
-import Foundation
 import UIKit
 
-final class LoginView: UIView {
+final class SignUpView: UIView {
     
     private var iconClick = true
     
@@ -27,7 +26,7 @@ final class LoginView: UIView {
     
     private let welcomeLabel: UILabel = {
        let label = UILabel()
-        label.text = "Welcome Back,"
+        label.text = "Hello,"
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = BaseColors.white
         return label
@@ -35,7 +34,7 @@ final class LoginView: UIView {
     
     private let logInLabel: UILabel = {
         let label = UILabel()
-        label.text = "Log In !"
+        label.text = "Sign Up !"
         label.font = UIFont.systemFont(ofSize: 50, weight: .bold)
         label.textColor = BaseColors.white
         return label
@@ -48,6 +47,19 @@ final class LoginView: UIView {
         return stackView
     }()
     
+    private let userNameTF: UITextField = {
+        let textField = UITextField()
+        textField.attributedPlaceholder = NSAttributedString(string: "USER NAME", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
+        textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
+        textField.layer.cornerRadius = 20
+        textField.layer.borderWidth = 2
+        textField.layer.borderColor = BaseColors.gray?.cgColor
+        textField.textColor = BaseColors.white
+        textField.indent(size: 30)
+        textField.tag = 0
+        return textField
+    }()
+    
     private let emailTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
@@ -57,7 +69,7 @@ final class LoginView: UIView {
         textField.layer.borderColor = BaseColors.gray?.cgColor
         textField.textColor = BaseColors.white
         textField.indent(size: 30)
-        textField.tag = 0
+        textField.tag = 1
         return textField
     }()
     
@@ -71,12 +83,12 @@ final class LoginView: UIView {
         textField.textColor = BaseColors.white
         textField.indent(size: 30)
         textField.isSecureTextEntry = true
-        textField.tag = 1
+        textField.tag = 2
         return textField
     }()
     
     private lazy var textFieldStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [emailTF, passwordTF])
+        let stackView = UIStackView(arrangedSubviews: [userNameTF, emailTF, passwordTF])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
         stackView.spacing = 40
@@ -98,39 +110,6 @@ final class LoginView: UIView {
         switchUI.isOn = true
         switchUI.onTintColor = BaseColors.blue
         return switchUI
-    }()
-    
-    private let rememberMeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Remember me"
-        label.textColor = BaseColors.white
-        label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        return label
-    }()
-    
-    private let forgetPasswordLabel: UIButton = {
-        var plain = UIButton.Configuration.plain()
-        plain.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0)
-        plain.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer({ incoming in
-            var outgoing = incoming
-            outgoing.font = UIFont.systemFont(ofSize: 15, weight: .regular)
-              return outgoing
-        })
-        
-        let button = UIButton(configuration: plain, primaryAction: nil)
-        button.setTitle("forget password", for: .normal)
-        button.tintColor = BaseColors.blue
-        button.contentHorizontalAlignment = .right
-        return button
-    }()
-    
-    private lazy var rememberMeStackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [switchUI, rememberMeLabel, forgetPasswordLabel])
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 10
-        stackView.contentMode = .scaleToFill
-        return stackView
     }()
     
     private let whiteLine1: UIView = {
@@ -196,10 +175,10 @@ final class LoginView: UIView {
         return stackView
     }()
     
-    private let loginButton: UIButton = {
+    private let signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Sign Up", for: .normal)
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -216,7 +195,7 @@ final class LoginView: UIView {
         scrollView.contentSize = contentSize
         contentView.frame.size = contentSize
         
-        loginButton.applyGradient()
+        signUpButton.applyGradient()
     }
     
     // MARK: - init
@@ -281,12 +260,12 @@ final class LoginView: UIView {
         
         contentView.addSubview(welcomeStackView)
         contentView.addSubview(textFieldStackView)
-        contentView.addSubview(rememberMeStackView)
+//        contentView.addSubview(rememberMeStackView)
         contentView.addSubview(whiteLine1)
         contentView.addSubview(orLabel)
         contentView.addSubview(whiteLine2)
         contentView.addSubview(socialStackView)
-        contentView.addSubview(loginButton)
+        contentView.addSubview(signUpButton)
         
         let eyeView = UIView()
         eyeView.addSubview(imageIcon)
@@ -307,6 +286,8 @@ final class LoginView: UIView {
             welcomeStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             welcomeStackView.heightAnchor.constraint(equalToConstant: 100),
             
+            userNameTF.heightAnchor.constraint(equalToConstant: 50),
+            
             emailTF.heightAnchor.constraint(equalToConstant: 50),
 
             passwordTF.heightAnchor.constraint(equalToConstant: 50),
@@ -315,17 +296,13 @@ final class LoginView: UIView {
             textFieldStackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 20),
             textFieldStackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -20),
             
-            rememberMeStackView.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 20),
-            rememberMeStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            rememberMeStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            
             whiteLine1.heightAnchor.constraint(equalToConstant: 2),
             whiteLine1.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
             whiteLine1.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20),
             whiteLine1.rightAnchor.constraint(equalTo: orLabel.leftAnchor, constant: -10),
             
             orLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            orLabel.topAnchor.constraint(equalTo: rememberMeStackView.bottomAnchor, constant: 50),
+            orLabel.topAnchor.constraint(equalTo: textFieldStackView.bottomAnchor, constant: 50),
             
             whiteLine2.heightAnchor.constraint(equalToConstant: 2),
             whiteLine2.centerYAnchor.constraint(equalTo: orLabel.centerYAnchor),
@@ -344,17 +321,17 @@ final class LoginView: UIView {
             socialStackView.centerXAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.centerXAnchor),
             socialStackView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20),
             
-            loginButton.topAnchor.constraint(equalTo: socialStackView.bottomAnchor, constant: 80),
-            loginButton.heightAnchor.constraint(equalToConstant: 60),
-            loginButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
-            loginButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
-            loginButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -35)
+            signUpButton.topAnchor.constraint(equalTo: socialStackView.bottomAnchor, constant: 80),
+            signUpButton.heightAnchor.constraint(equalToConstant: 60),
+            signUpButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40),
+            signUpButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40),
+            signUpButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -35)
         ])
     }
 }
 
 // MARK: - extension
-extension LoginView: UITextFieldDelegate {
+extension SignUpView: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         let nextTag = textField.tag + 1
