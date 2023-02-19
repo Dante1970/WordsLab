@@ -48,7 +48,7 @@ final class LoginView: UIView {
         return stackView
     }()
     
-    private let emailTF: UITextField = {
+    let emailTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
         textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -61,7 +61,7 @@ final class LoginView: UIView {
         return textField
     }()
     
-    private let passwordTF: UITextField = {
+    let passwordTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
         textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -196,13 +196,14 @@ final class LoginView: UIView {
         return stackView
     }()
     
-    private let loginButton: UIButton = {
+    let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log In", for: .normal)
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+//        button.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
         return button
     }()
     

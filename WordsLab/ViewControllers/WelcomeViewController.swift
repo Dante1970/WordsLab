@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    var viewModel: WelcomeViewModel!
+    private var viewModel: WelcomeViewModel!
     
     private let welcomeLabel: UILabel = {
        let label = UILabel()

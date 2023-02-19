@@ -13,6 +13,10 @@
 		BE240E642988268D0001F4B7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE240E632988268D0001F4B7 /* Assets.xcassets */; };
 		BE240E672988268D0001F4B7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE240E652988268D0001F4B7 /* LaunchScreen.storyboard */; };
 		BE240E71298830540001F4B7 /* BaseColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE240E70298830540001F4B7 /* BaseColors.swift */; };
+		BE37864429A2B2D300472C51 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37864329A2B2D300472C51 /* LoginViewModel.swift */; };
+		BE37864629A2C05100472C51 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37864529A2C05100472C51 /* LoginManager.swift */; };
+		BE37864929A2C2F400472C51 /* SignUpManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37864829A2C2F400472C51 /* SignUpManager.swift */; };
+		BE37864B29A2C4D300472C51 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37864A29A2C4D300472C51 /* SignUpViewModel.swift */; };
 		BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE50299BEE42006B1B36 /* LoginView.swift */; };
 		BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */; };
 		BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5629A0D143006B1B36 /* SignUpView.swift */; };
@@ -32,6 +36,10 @@
 		BE240E662988268D0001F4B7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE240E682988268D0001F4B7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE240E70298830540001F4B7 /* BaseColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseColors.swift; sourceTree = "<group>"; };
+		BE37864329A2B2D300472C51 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		BE37864529A2C05100472C51 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		BE37864829A2C2F400472C51 /* SignUpManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpManager.swift; sourceTree = "<group>"; };
+		BE37864A29A2C4D300472C51 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		BE59FE50299BEE42006B1B36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BE59FE5629A0D143006B1B36 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -62,7 +70,6 @@
 				DB5331EF79E12F40E2865504 /* Pods-WordsLab.debug.xcconfig */,
 				CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -95,6 +102,7 @@
 		BE240E592988268C0001F4B7 /* WordsLab */ = {
 			isa = PBXGroup;
 			children = (
+				BE37864729A2C05800472C51 /* Manager */,
 				BE59FE52299BEE49006B1B36 /* Views */,
 				BE240E6F29882A570001F4B7 /* ViewControllers */,
 				BEB6DDC2298D783700B8A1B5 /* ViewModels */,
@@ -128,6 +136,15 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
+		BE37864729A2C05800472C51 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				BE37864529A2C05100472C51 /* LoginManager.swift */,
+				BE37864829A2C2F400472C51 /* SignUpManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		BE59FE52299BEE49006B1B36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +158,8 @@
 			isa = PBXGroup;
 			children = (
 				BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */,
+				BE37864329A2B2D300472C51 /* LoginViewModel.swift */,
+				BE37864A29A2C4D300472C51 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -262,13 +281,17 @@
 			files = (
 				BEB6DDBF298D766700B8A1B5 /* LoginViewController.swift in Sources */,
 				BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */,
+				BE37864429A2B2D300472C51 /* LoginViewModel.swift in Sources */,
 				BE240E71298830540001F4B7 /* BaseColors.swift in Sources */,
 				BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */,
+				BE37864629A2C05100472C51 /* LoginManager.swift in Sources */,
+				BE37864B29A2C4D300472C51 /* SignUpViewModel.swift in Sources */,
 				BE240E5F2988268C0001F4B7 /* WelcomeViewController.swift in Sources */,
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
 				BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */,
 				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
+				BE37864929A2C2F400472C51 /* SignUpManager.swift in Sources */,
 				BE240E5D2988268C0001F4B7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

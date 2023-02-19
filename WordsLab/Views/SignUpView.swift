@@ -47,7 +47,7 @@ final class SignUpView: UIView {
         return stackView
     }()
     
-    private let userNameTF: UITextField = {
+    let userNameTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "USER NAME", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
         textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -60,7 +60,7 @@ final class SignUpView: UIView {
         return textField
     }()
     
-    private let emailTF: UITextField = {
+    let emailTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "EMAIL ADDRESS", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
         textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -73,7 +73,7 @@ final class SignUpView: UIView {
         return textField
     }()
     
-    private let passwordTF: UITextField = {
+    let passwordTF: UITextField = {
         let textField = UITextField()
         textField.attributedPlaceholder = NSAttributedString(string: "PASSWORD", attributes: [NSAttributedString.Key.foregroundColor: BaseColors.gray!])
         textField.font = UIFont.systemFont(ofSize: 15, weight: .semibold)
@@ -175,7 +175,7 @@ final class SignUpView: UIView {
         return stackView
     }()
     
-    private let signUpButton: UIButton = {
+    let signUpButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Sign Up", for: .normal)
