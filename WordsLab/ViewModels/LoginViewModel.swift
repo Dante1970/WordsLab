@@ -19,6 +19,6 @@ class LoginViewModel {
             return
         }
         
-        LoginManager.shared.loginWithCredentials(email: email, password: password)
+        let result = LoginManager.shared.loginWithCredentials(email: email, password: password)
     }
 }
