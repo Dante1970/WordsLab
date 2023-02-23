@@ -11,6 +11,17 @@ class RecentDictionaryCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "RecentDictionaryCollectionViewCell"
     
+    weak var viewModel: HomeCellViewModelType? {
+        willSet(viewModel) {
+            
+            guard let viewModel = viewModel else { return }
+            
+            dictionaryName.text = viewModel.name
+            folderLabel.text = viewModel.folder
+            dateLabel.text = viewModel.date
+        }
+    }
+    
     private let folderView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 25 / 2

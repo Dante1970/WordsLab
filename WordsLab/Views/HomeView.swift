@@ -88,7 +88,7 @@ class HomeView: UIView {
         return label
     }()
     
-    private let recentDictionaryCollactionView: UICollectionView = {
+    let recentDictionaryCollactionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 80, height: 85)
@@ -124,8 +124,8 @@ class HomeView: UIView {
     // MARK: - makeUI
     private func makeUI() {
         
-        recentDictionaryCollactionView.delegate = self
-        recentDictionaryCollactionView.dataSource = self
+//        recentDictionaryCollactionView.delegate = self
+//        recentDictionaryCollactionView.dataSource = self
         
         self.backgroundColor = BaseColors.backgroundColor
         
@@ -176,14 +176,18 @@ class HomeView: UIView {
     }
 }
 
-extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentDictionaryCollectionViewCell.identifier, for: indexPath) as! RecentDictionaryCollectionViewCell
-        return cell
-    }
-}
+//extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 4
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentDictionaryCollectionViewCell.identifier, for: indexPath) as? RecentDictionaryCollectionViewCell
+//
+//        guard let cell = cell, let viewModel = self.viewModel else { return UICollectionViewCell() }
+//
+//        return cell
+//    }
+//}
