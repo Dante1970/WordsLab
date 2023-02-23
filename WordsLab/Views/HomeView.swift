@@ -57,7 +57,38 @@ class HomeView: UIView {
         return view
     }()
     
-    private let recentDictionaryCollactionView: UICollectionView = {
+    private let numberOfWordsLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Number of words"
+        label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
+        label.textColor = BaseColors.white
+        return label
+    }()
+    
+    private let wordCountLabel: UILabel = {
+        let label = UILabel()
+        label.text = "123"
+        label.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+        label.textColor = BaseColors.white
+        return label
+    }()
+    
+    private lazy var numberOfWordsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [numberOfWordsLabel, wordCountLabel])
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        return stackView
+    }()
+    
+    private let recentDictionaryLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Recent dictionary"
+        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.textColor = BaseColors.white
+        return label
+    }()
+    
+    let recentDictionaryCollactionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 80, height: 85)
@@ -93,22 +124,27 @@ class HomeView: UIView {
     // MARK: - makeUI
     private func makeUI() {
         
-        recentDictionaryCollactionView.delegate = self
-        recentDictionaryCollactionView.dataSource = self
+//        recentDictionaryCollactionView.delegate = self
+//        recentDictionaryCollactionView.dataSource = self
         
         self.backgroundColor = BaseColors.backgroundColor
         
         self.addSubview(imageLogo)
         self.addSubview(helloStackView)
         self.addSubview(numberOfWordsView)
+        numberOfWordsView.addSubview(numberOfWordsStackView)
+        self.addSubview(recentDictionaryLabel)
         self.addSubview(recentDictionaryCollactionView)
     }
     
     // MARK: - setupConstraints
     private func setupConstraints() {
+        
         imageLogo.translatesAutoresizingMaskIntoConstraints = false
         helloStackView.translatesAutoresizingMaskIntoConstraints = false
         numberOfWordsView.translatesAutoresizingMaskIntoConstraints = false
+        numberOfWordsStackView.translatesAutoresizingMaskIntoConstraints = false
+        recentDictionaryLabel.translatesAutoresizingMaskIntoConstraints = false
         recentDictionaryCollactionView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 20
@@ -125,6 +161,13 @@ class HomeView: UIView {
             numberOfWordsView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -padding),
             numberOfWordsView.heightAnchor.constraint(equalToConstant: 110),
             
+            numberOfWordsStackView.centerXAnchor.constraint(equalTo: numberOfWordsView.centerXAnchor),
+            numberOfWordsStackView.centerYAnchor.constraint(equalTo: numberOfWordsView.centerYAnchor),
+            
+            recentDictionaryLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            recentDictionaryLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            recentDictionaryLabel.bottomAnchor.constraint(equalTo: recentDictionaryCollactionView.topAnchor, constant: -8),
+            
             recentDictionaryCollactionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
             recentDictionaryCollactionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             recentDictionaryCollactionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
@@ -133,14 +176,18 @@ class HomeView: UIView {
     }
 }
 
-extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
-    }
-
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentDictionaryCollectionViewCell.identifier, for: indexPath) as! RecentDictionaryCollectionViewCell
-        return cell
-    }
-}
+//extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
+//
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        return 4
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentDictionaryCollectionViewCell.identifier, for: indexPath) as? RecentDictionaryCollectionViewCell
+//
+//        guard let cell = cell, let viewModel = self.viewModel else { return UICollectionViewCell() }
+//
+//        return cell
+//    }
+//}

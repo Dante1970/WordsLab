@@ -24,6 +24,11 @@
 		BE37865929A688AC00472C51 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37865829A688AC00472C51 /* ProfileViewController.swift */; };
 		BE37865D29A6891400472C51 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37865C29A6891400472C51 /* MainTabBarViewController.swift */; };
 		BE37865F29A6B55700472C51 /* RecentDictionaryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37865E29A6B55700472C51 /* RecentDictionaryCollectionViewCell.swift */; };
+		BE37866229A7E40900472C51 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37866129A7E40900472C51 /* HomeViewModel.swift */; };
+		BE37866429A7E5DC00472C51 /* Dictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37866329A7E5DC00472C51 /* Dictionary.swift */; };
+		BE37866729A7E85300472C51 /* HomeViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37866629A7E85300472C51 /* HomeViewModelType.swift */; };
+		BE37866A29A7EF9700472C51 /* HomeViewCellViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37866929A7EF9700472C51 /* HomeViewCellViewModelType.swift */; };
+		BE37866C29A7F31700472C51 /* HomeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37866B29A7F31700472C51 /* HomeCellViewModel.swift */; };
 		BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE50299BEE42006B1B36 /* LoginView.swift */; };
 		BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */; };
 		BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5629A0D143006B1B36 /* SignUpView.swift */; };
@@ -54,6 +59,11 @@
 		BE37865829A688AC00472C51 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		BE37865C29A6891400472C51 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		BE37865E29A6B55700472C51 /* RecentDictionaryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentDictionaryCollectionViewCell.swift; sourceTree = "<group>"; };
+		BE37866129A7E40900472C51 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		BE37866329A7E5DC00472C51 /* Dictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dictionary.swift; sourceTree = "<group>"; };
+		BE37866629A7E85300472C51 /* HomeViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelType.swift; sourceTree = "<group>"; };
+		BE37866929A7EF9700472C51 /* HomeViewCellViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewCellViewModelType.swift; sourceTree = "<group>"; };
+		BE37866B29A7F31700472C51 /* HomeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellViewModel.swift; sourceTree = "<group>"; };
 		BE59FE50299BEE42006B1B36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BE59FE5629A0D143006B1B36 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -120,6 +130,7 @@
 				BE59FE52299BEE49006B1B36 /* Views */,
 				BE240E6F29882A570001F4B7 /* ViewControllers */,
 				BEB6DDC2298D783700B8A1B5 /* ViewModels */,
+				BE37866829A7EF8E00472C51 /* Protocols */,
 				BE240E6E298829FB0001F4B7 /* Resources */,
 				BE240E682988268D0001F4B7 /* Info.plist */,
 				BE59FE5829A0E04D006B1B36 /* GoogleService-Info.plist */,
@@ -172,6 +183,23 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		BE37866529A7E84600472C51 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BE37866329A7E5DC00472C51 /* Dictionary.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		BE37866829A7EF8E00472C51 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BE37866629A7E85300472C51 /* HomeViewModelType.swift */,
+				BE37866929A7EF9700472C51 /* HomeViewCellViewModelType.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		BE59FE52299BEE49006B1B36 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -189,6 +217,9 @@
 				BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */,
 				BE37864329A2B2D300472C51 /* LoginViewModel.swift */,
 				BE37864A29A2C4D300472C51 /* SignUpViewModel.swift */,
+				BE37866129A7E40900472C51 /* HomeViewModel.swift */,
+				BE37866B29A7F31700472C51 /* HomeCellViewModel.swift */,
+				BE37866529A7E84600472C51 /* Models */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -309,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE37865329A6881500472C51 /* FoldersViewController.swift in Sources */,
+				BE37866229A7E40900472C51 /* HomeViewModel.swift in Sources */,
 				BEB6DDBF298D766700B8A1B5 /* LoginViewController.swift in Sources */,
 				BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */,
 				BE37864429A2B2D300472C51 /* LoginViewModel.swift in Sources */,
@@ -316,17 +348,21 @@
 				BE37865D29A6891400472C51 /* MainTabBarViewController.swift in Sources */,
 				BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */,
 				BE37864D29A683AB00472C51 /* HomeViewController.swift in Sources */,
+				BE37866729A7E85300472C51 /* HomeViewModelType.swift in Sources */,
 				BE37864629A2C05100472C51 /* LoginManager.swift in Sources */,
 				BE37865729A6888600472C51 /* DictionariesViewController.swift in Sources */,
 				BE37865929A688AC00472C51 /* ProfileViewController.swift in Sources */,
+				BE37866429A7E5DC00472C51 /* Dictionary.swift in Sources */,
 				BE37864B29A2C4D300472C51 /* SignUpViewModel.swift in Sources */,
 				BE240E5F2988268C0001F4B7 /* WelcomeViewController.swift in Sources */,
+				BE37866A29A7EF9700472C51 /* HomeViewCellViewModelType.swift in Sources */,
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
 				BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */,
 				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
 				BE37865129A6841400472C51 /* HomeView.swift in Sources */,
 				BE37864929A2C2F400472C51 /* SignUpManager.swift in Sources */,
+				BE37866C29A7F31700472C51 /* HomeCellViewModel.swift in Sources */,
 				BE37865F29A6B55700472C51 /* RecentDictionaryCollectionViewCell.swift in Sources */,
 				BE240E5D2988268C0001F4B7 /* SceneDelegate.swift in Sources */,
 			);
