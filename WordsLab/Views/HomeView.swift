@@ -175,19 +175,3 @@ class HomeView: UIView {
         ])
     }
 }
-
-//extension HomeView: UICollectionViewDelegate, UICollectionViewDataSource {
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        return 4
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecentDictionaryCollectionViewCell.identifier, for: indexPath) as? RecentDictionaryCollectionViewCell
-//
-//        guard let cell = cell, let viewModel = self.viewModel else { return UICollectionViewCell() }
-//
-//        return cell
-//    }
-//}
