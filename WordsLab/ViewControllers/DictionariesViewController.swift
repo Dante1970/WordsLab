@@ -25,8 +25,6 @@ class DictionariesViewController: UIViewController {
         
         mainView.dictionariesViewTableView.delegate = self
         mainView.dictionariesViewTableView.dataSource = self
-
-        view.backgroundColor = .black
     }
 }
 
@@ -49,6 +47,6 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
             return addCell
         }
         
-        return UITableViewCell()
+        return cell
     }
 }
