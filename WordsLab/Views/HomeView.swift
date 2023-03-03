@@ -124,9 +124,6 @@ class HomeView: UIView {
     // MARK: - makeUI
     private func makeUI() {
         
-//        recentDictionaryCollactionView.delegate = self
-//        recentDictionaryCollactionView.dataSource = self
-        
         self.backgroundColor = BaseColors.backgroundColor
         
         self.addSubview(imageLogo)

@@ -34,6 +34,7 @@
 		BE37867229ACB9F300472C51 /* AddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37867129ACB9F300472C51 /* AddTableViewCell.swift */; };
 		BE37867429AD247600472C51 /* DictionariesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37867329AD247600472C51 /* DictionariesView.swift */; };
 		BE37867629AD367300472C51 /* DictionaryViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37867529AD367300472C51 /* DictionaryViewTableViewCell.swift */; };
+		BE37867B29B12E0C00472C51 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE37867A29B12E0B00472C51 /* ProfileView.swift */; };
 		BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE50299BEE42006B1B36 /* LoginView.swift */; };
 		BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */; };
 		BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE59FE5629A0D143006B1B36 /* SignUpView.swift */; };
@@ -74,6 +75,7 @@
 		BE37867129ACB9F300472C51 /* AddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTableViewCell.swift; sourceTree = "<group>"; };
 		BE37867329AD247600472C51 /* DictionariesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionariesView.swift; sourceTree = "<group>"; };
 		BE37867529AD367300472C51 /* DictionaryViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryViewTableViewCell.swift; sourceTree = "<group>"; };
+		BE37867A29B12E0B00472C51 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		BE59FE50299BEE42006B1B36 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		BE59FE5429A0D0F2006B1B36 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		BE59FE5629A0D143006B1B36 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				BE37865029A6841400472C51 /* HomeView.swift */,
 				BE37866D29ACA34600472C51 /* FoldersView.swift */,
 				BE37867329AD247600472C51 /* DictionariesView.swift */,
+				BE37867A29B12E0B00472C51 /* ProfileView.swift */,
 				BE37866029A6B55D00472C51 /* Cells */,
 			);
 			path = Views;
@@ -378,6 +381,7 @@
 				BE240E5B2988268C0001F4B7 /* AppDelegate.swift in Sources */,
 				BE59FE5729A0D143006B1B36 /* SignUpView.swift in Sources */,
 				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
+				BE37867B29B12E0C00472C51 /* ProfileView.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
 				BE37865129A6841400472C51 /* HomeView.swift in Sources */,
 				BE37864929A2C2F400472C51 /* SignUpManager.swift in Sources */,
