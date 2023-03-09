@@ -67,7 +67,7 @@ class ProfileView: UIView {
         return stackView
     }()
     
-    private let signOutButton: UIButton = {
+    let signOutButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign Out", for: .normal)
         button.setTitleColor(UIColor.red, for: .normal)

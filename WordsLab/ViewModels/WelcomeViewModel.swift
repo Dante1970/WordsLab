@@ -9,6 +9,13 @@ import Foundation
 
 class WelcomeViewModel {
     
-    let loginViewController = LoginViewController()
-    let signUpViewController = SignUpViewController()
+    weak var coordinator: AuthCoordinator!
+    
+    func goToLogIn() {
+        coordinator.goToLogInPage()
+    }
+    
+    func goToSignUp() {
+        coordinator.goToSignUpPage()
+    }
 }

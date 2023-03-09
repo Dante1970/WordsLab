@@ -9,7 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
-    private var viewModel: HomeViewModelType?
+    var viewModel: HomeViewModelType!
     
     override func loadView() {
         self.view = HomeView()
@@ -27,8 +27,10 @@ class HomeViewController: UIViewController {
         
         mainView.recentDictionaryCollactionView.delegate = self
         mainView.recentDictionaryCollactionView.dataSource = self
-        
-        viewModel = HomeViewModel()
+    }
+    
+    deinit {
+        print("HomeViewController deinit")
     }
 }
 

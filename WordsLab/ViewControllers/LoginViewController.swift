@@ -9,7 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    private var viewModel: LoginViewModel?
+    var viewModel: LoginViewModel!
     
     override func loadView() {
         self.view = LoginView()
@@ -25,8 +25,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = LoginViewModel()
-        
         addAction()
     }
     
@@ -36,5 +34,9 @@ class LoginViewController: UIViewController {
     
     private func addAction() {
         mainView.loginButton.addTarget(self, action: #selector(loginButtonAction), for: .touchUpInside)
+    }
+    
+    deinit {
+        print("LoginViewController deinit")
     }
 }

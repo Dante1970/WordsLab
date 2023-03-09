@@ -9,6 +9,8 @@ import Foundation
 
 class HomeViewModel: HomeViewModelType {
     
+    weak var coordinator: HomeCoordinator!
+    
     var numberOfWords: Int = 123
     
     var countOfRecentDictionaries: Int {

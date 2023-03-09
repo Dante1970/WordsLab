@@ -9,16 +9,24 @@ import Foundation
 
 class SignUpViewModel {
     
+    weak var coordinator: AuthCoordinator!
+    
     func signUp(email: String?, password: String?) {
         
-        guard let email = email,
-              let password = password,
-              email != "",
-              password != "" else {
-            print("Error! Wrong email or password.")
-            return
-        }
+//        guard let email = email,
+//              let password = password,
+//              email != "",
+//              password != "" else {
+//            print("Error! Wrong email or password.")
+//            return
+//        }
+//        
+//        SignUpManager.shared.SignUpWithCredentials(email: email, password: password)
         
-        SignUpManager.shared.SignUpWithCredentials(email: email, password: password)
+        goToHome()
+    }
+    
+    func goToHome() {
+        coordinator.goToHome()
     }
 }

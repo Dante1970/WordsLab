@@ -9,6 +9,8 @@ import UIKit
 
 class DictionariesViewController: UIViewController {
     
+    var viewModel: DictionariesViewModel!
+    
     override func loadView() {
         self.view = DictionariesView()
     }
@@ -25,6 +27,10 @@ class DictionariesViewController: UIViewController {
         
         mainView.dictionariesViewTableView.delegate = self
         mainView.dictionariesViewTableView.dataSource = self
+    }
+    
+    deinit {
+        print("DictionariesViewController deinit")
     }
 }
 

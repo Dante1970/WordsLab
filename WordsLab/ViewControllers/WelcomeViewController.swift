@@ -9,7 +9,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
-    private var viewModel: WelcomeViewModel!
+    var viewModel: WelcomeViewModel!
     
     private let welcomeLabel: UILabel = {
        let label = UILabel()
@@ -69,8 +69,6 @@ class WelcomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = WelcomeViewModel()
-        
         makeUI()
     }
     
@@ -79,11 +77,11 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func loginButtonAction() {
-        self.navigationController?.pushViewController(viewModel.loginViewController, animated: true)
+        viewModel.goToLogIn()
     }
     
     @objc private func signUpButtonAction() {
-        self.navigationController?.pushViewController(viewModel.signUpViewController, animated: true)
+        viewModel.goToSignUp()
     }
     
     private func makeUI() {
@@ -118,6 +116,10 @@ class WelcomeViewController: UIViewController {
             signUpButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -40),
             signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -35)
         ])
+    }
+    
+    deinit {
+        print("WelcomeViewController deinit")
     }
 }
 

@@ -9,6 +9,8 @@ import UIKit
 
 class FoldersViewController: UIViewController {
     
+    var viewModel: FoldersViewModel!
+    
     override func loadView() {
         self.view = FoldersView()
     }
@@ -24,6 +26,10 @@ class FoldersViewController: UIViewController {
         
         mainView.foldersViewTableView.delegate = self
         mainView.foldersViewTableView.dataSource = self
+    }
+    
+    deinit {
+        print("FoldersViewController deinit")
     }
 }
 
