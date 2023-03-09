@@ -9,6 +9,8 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    var viewModel: ProfileViewModel!
+    
     override func loadView() {
         self.view = ProfileView()
     }
@@ -22,6 +24,19 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        addAction()
+    }
+    
+    @objc private func signOutButtonAction() {
+        viewModel.goToWelcome()
+    }
+    
+    func addAction() {
+        mainView.signOutButton.addTarget(self, action: #selector(signOutButtonAction), for: .touchUpInside)
+    }
+    
+    deinit {
+        print("ProfileViewController deinit")
     }
 }

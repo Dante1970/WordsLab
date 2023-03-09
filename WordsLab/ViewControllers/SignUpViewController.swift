@@ -9,7 +9,7 @@ import UIKit
 
 class SignUpViewController: UIViewController {
     
-    private var viewModel: SignUpViewModel!
+    var viewModel: SignUpViewModel!
     
     override func loadView() {
         self.view = SignUpView()
@@ -25,8 +25,6 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewModel = SignUpViewModel()
-        
         addAction()
     }
     
@@ -36,5 +34,9 @@ class SignUpViewController: UIViewController {
     
     private func addAction() {
         mainView.signUpButton.addTarget(self, action: #selector(signUpButtonAction), for: .touchUpInside)
+    }
+    
+    deinit {
+        print("SignUpViewController deinit")
     }
 }
