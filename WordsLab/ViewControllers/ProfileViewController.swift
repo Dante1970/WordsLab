@@ -29,7 +29,7 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func signOutButtonAction() {
-        viewModel.goToWelcome()
+        viewModel.signOut()
     }
     
     func addAction() {

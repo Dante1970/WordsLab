@@ -13,17 +13,23 @@ class LoginViewModel {
     
     func login(email: String?, password: String?) {
         
-//        guard let email = email,
-//              let password = password,
-//              email != "",
-//              password != "" else {
-//            print("Error! Wrong email or password.")
-//            return
-//        }
-//        
-//        let result = LoginManager.shared.loginWithCredentials(email: email, password: password)
+        guard let email = email,
+              let password = password,
+              email != "",
+              password != "" else {
+            print("Error! Wrong email or password.")
+            return
+        }
         
-        goToHome()
+        AuthManager.shared.loginWithCredentials(email: email, password: password) { [weak self] result in
+            
+            switch result {
+            case .success:
+                self!.goToHome()
+            case .failure(let error):
+                print("Error \(error.localizedDescription)")
+            }
+        }
     }
     
     func goToHome() {

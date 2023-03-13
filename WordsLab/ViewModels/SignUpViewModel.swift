@@ -13,15 +13,25 @@ class SignUpViewModel {
     
     func signUp(email: String?, password: String?) {
         
-//        guard let email = email,
-//              let password = password,
-//              email != "",
-//              password != "" else {
-//            print("Error! Wrong email or password.")
-//            return
-//        }
-//        
-//        SignUpManager.shared.SignUpWithCredentials(email: email, password: password)
+        guard let email = email,
+              let password = password,
+              email != "",
+              password != "" else {
+            print("Error! Wrong email or password.")
+            return
+        }
+        
+        AuthManager.shared.SignUpWithCredentials(email: email, password: password) { [weak self] result in
+            
+            guard self != nil else { return }
+            
+            switch result {
+            case .success:
+                self!.goToHome()
+            case.failure(let error):
+                print("Error \(error.localizedDescription)")
+            }
+        }
         
         goToHome()
     }
