@@ -25,9 +25,9 @@ class FoldersViewTableViewCell: UITableViewCell {
         return imageView
     }()
     
-    private let nameFolderLabel: UILabel = {
+    let nameFolderLabel: UILabel = {
         let label = UILabel()
-        label.text = "Folder"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = BaseColors.white
         return label
