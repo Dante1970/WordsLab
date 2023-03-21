@@ -11,7 +11,12 @@ class ProfileViewModel {
     
     weak var coordinator: ProfileCoordinator!
     
-    func goToWelcome() {
-        coordinator.signOut()
+    func signOut() {
+        
+        if AuthManager.shared.signOut() {
+            coordinator.signOut()
+        } else {
+            print("ProfileViewModel: sign out error!")
+        }
     }
 }

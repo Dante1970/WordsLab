@@ -8,5 +8,6 @@ target 'WordsLab' do
   pod 'FirebaseAnalytics'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'RealmSwift'
 
 end

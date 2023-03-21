@@ -11,7 +11,7 @@ class AddTableViewCell: UITableViewCell {
 
     static let identifier = "AddTableViewCell"
     
-    private let addButton: UIButton = {
+    let addButton: UIButton = {
         let button = UIButton()
         let image = UIImage(named: "PlusIcon")
         button.setImage(image, for: .normal)

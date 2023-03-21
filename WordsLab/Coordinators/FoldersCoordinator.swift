@@ -23,6 +23,7 @@ class FoldersCoordinator: Coordinator {
         let foldersViewController = FoldersViewController()
         let foldersViewModel = FoldersViewModel()
         foldersViewModel.coordinator = self
+        foldersViewModel.folders = LocalStorageManager.shared.obtainFolders()
         foldersViewController.viewModel = foldersViewModel
         navigationController.pushViewController(foldersViewController, animated: true)
     }

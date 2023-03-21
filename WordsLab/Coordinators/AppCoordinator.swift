@@ -14,9 +14,17 @@ class AppCoordinator: Coordinator {
     var children: [Coordinator] = []
     var navigationController: UINavigationController
     
+    var isLoggedIn: Bool = false
+    
     func start() {
-        goToAuth()
-        print("start AppCoordinator")
+        
+        isLoggedIn = AuthManager.shared.isUserLoggedIn()
+        
+        if isLoggedIn {
+            goToHome()
+        } else {
+            goToAuth()
+        }
     }
     
     func goToAuth() {
@@ -27,6 +35,8 @@ class AppCoordinator: Coordinator {
         
         authCoordinator.parentCoordinator = self
         children.append(authCoordinator)
+        
+        navigationController.setNavigationBarHidden(false, animated: true)
         
         authCoordinator.start()
     }
