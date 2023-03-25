@@ -11,13 +11,15 @@ class SignUpViewModel {
     
     weak var coordinator: AuthCoordinator!
     
-    func signUp(email: String?, password: String?) {
+    func signUp(name: String?, email: String?, password: String?) {
         
         guard let email = email,
               let password = password,
+              let name = name,
+              name != "",
               email != "",
               password != "" else {
-            print("Error! Wrong email or password.")
+            print("Error! Wrong email, password or name.")
             return
         }
         
@@ -27,13 +29,12 @@ class SignUpViewModel {
             
             switch result {
             case .success:
+                CloudStorageManager.shared.createUser(name: name)
                 self!.goToHome()
             case.failure(let error):
                 print("Error \(error.localizedDescription)")
             }
         }
-        
-        goToHome()
     }
     
     func goToHome() {

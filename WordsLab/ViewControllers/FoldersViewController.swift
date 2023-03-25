@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import RealmSwift
 
 class FoldersViewController: UIViewController {
     
@@ -28,10 +27,10 @@ class FoldersViewController: UIViewController {
         
         mainView.foldersViewTableView.delegate = self
         mainView.foldersViewTableView.dataSource = self
-        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     @objc private func addFolder() {
+        
         let alertController = viewModel.alertController(title: "Add new folder", message: "Write the name of the folder") { [weak self] in
             guard let self = self else { return }
             

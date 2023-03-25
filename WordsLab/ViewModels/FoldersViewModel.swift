@@ -40,10 +40,19 @@ class FoldersViewModel {
     }
     
     private func addFolderToStorage(name: String) {
-        let folderModel = FolderModel(name: name, ownerId: "123")
         
-        folders.append(folderModel)
+        guard let appCoordinator = coordinator.parentCoordinator as? AppCoordinator else { return }
         
-        LocalStorageManager.shared.add(object: folderModel)
+        if let userUID = appCoordinator.userUID {
+            
+            let folderModel = FolderModel(name: name, ownerId: userUID)
+            
+            folders.append(folderModel)
+            
+            LocalStorageManager.shared.add(object: folderModel)
+            CloudStorageManager.shared.addFolder(name: name)
+        } else {
+            print("No such coordinator")
+        }
     }
 }

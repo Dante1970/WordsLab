@@ -14,6 +14,7 @@ class AppCoordinator: Coordinator {
     var children: [Coordinator] = []
     var navigationController: UINavigationController
     
+    var userUID: String?
     var isLoggedIn: Bool = false
     
     func start() {
@@ -42,6 +43,8 @@ class AppCoordinator: Coordinator {
     }
     
     func goToHome() {
+        
+        if userUID == nil { userUID = AuthManager.shared.getUID() }
         
         let homeTabBarCoordinator = HomeTabBarCoordinator(navigationController: navigationController)
         
