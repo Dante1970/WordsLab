@@ -52,6 +52,7 @@
 		BEB6DDBD298C1B4600B8A1B5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */; };
 		BEB6DDBF298D766700B8A1B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */; };
 		BEB6DDC4298D790100B8A1B5 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */; };
+		BEEDA50429CCCA7700750548 /* CloudStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA50329CCCA7700750548 /* CloudStorageManager.swift */; };
 		C0D0424E1B1FE44D05D57191 /* Pods_WordsLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */; };
 /* End PBXBuildFile section */
 
@@ -103,6 +104,7 @@
 		BEB6DDBC298C1B4600B8A1B5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		BEB6DDBE298D766700B8A1B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		BEB6DDC3298D790100B8A1B5 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		BEEDA50329CCCA7700750548 /* CloudStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudStorageManager.swift; sourceTree = "<group>"; };
 		C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordsLab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordsLab.release.xcconfig"; path = "Target Support Files/Pods-WordsLab/Pods-WordsLab.release.xcconfig"; sourceTree = "<group>"; };
 		DB5331EF79E12F40E2865504 /* Pods-WordsLab.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordsLab.debug.xcconfig"; path = "Target Support Files/Pods-WordsLab/Pods-WordsLab.debug.xcconfig"; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			children = (
 				BE37869629BFAEDB00472C51 /* AuthManager.swift */,
 				BE37869829C9055300472C51 /* LocalStorageManager.swift */,
+				BEEDA50329CCCA7700750548 /* CloudStorageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				BE37865F29A6B55700472C51 /* RecentDictionaryCollectionViewCell.swift in Sources */,
 				BE37867429AD247600472C51 /* DictionariesView.swift in Sources */,
 				BE37868C29B7B65100472C51 /* DictionariesCoordinator.swift in Sources */,
+				BEEDA50429CCCA7700750548 /* CloudStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

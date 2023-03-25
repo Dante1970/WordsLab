@@ -29,7 +29,7 @@ class SignUpViewController: UIViewController {
     }
     
     @objc private func signUpButtonAction() {
-        viewModel.signUp(email: mainView.emailTF.text, password: mainView.passwordTF.text)
+        viewModel.signUp(name: mainView.userNameTF.text, email: mainView.emailTF.text, password: mainView.passwordTF.text)
     }
     
     private func addAction() {

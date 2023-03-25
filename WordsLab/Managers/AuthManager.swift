@@ -12,6 +12,10 @@ class AuthManager {
     
     static let shared = AuthManager()
     
+    func getUID() -> String? {
+        return Auth.auth().currentUser?.uid
+    }
+    
     func isUserLoggedIn() -> Bool {
         
         if Auth.auth().currentUser != nil {
