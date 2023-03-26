@@ -88,8 +88,7 @@ class HomeView: UIView {
         return label
     }()
     
-    let recentDictionaryCollactionView: UICollectionView = {
-        
+    let recentDictionaryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: UIScreen.main.bounds.width - 80, height: 85)
         layout.minimumLineSpacing = 20
@@ -131,7 +130,7 @@ class HomeView: UIView {
         self.addSubview(numberOfWordsView)
         numberOfWordsView.addSubview(numberOfWordsStackView)
         self.addSubview(recentDictionaryLabel)
-        self.addSubview(recentDictionaryCollactionView)
+        self.addSubview(recentDictionaryCollectionView)
     }
     
     // MARK: - setupConstraints
@@ -142,7 +141,7 @@ class HomeView: UIView {
         numberOfWordsView.translatesAutoresizingMaskIntoConstraints = false
         numberOfWordsStackView.translatesAutoresizingMaskIntoConstraints = false
         recentDictionaryLabel.translatesAutoresizingMaskIntoConstraints = false
-        recentDictionaryCollactionView.translatesAutoresizingMaskIntoConstraints = false
+        recentDictionaryCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
@@ -163,12 +162,12 @@ class HomeView: UIView {
             
             recentDictionaryLabel.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
             recentDictionaryLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            recentDictionaryLabel.bottomAnchor.constraint(equalTo: recentDictionaryCollactionView.topAnchor, constant: -8),
+            recentDictionaryLabel.bottomAnchor.constraint(equalTo: recentDictionaryCollectionView.topAnchor, constant: -8),
             
-            recentDictionaryCollactionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
-            recentDictionaryCollactionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
-            recentDictionaryCollactionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-            recentDictionaryCollactionView.heightAnchor.constraint(equalToConstant: 190),
+            recentDictionaryCollectionView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            recentDictionaryCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: padding),
+            recentDictionaryCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -padding),
+            recentDictionaryCollectionView.heightAnchor.constraint(equalToConstant: 190),
         ])
     }
 }

@@ -21,11 +21,12 @@ class AppCoordinator: Coordinator {
         
         isLoggedIn = AuthManager.shared.isUserLoggedIn()
         
-        if isLoggedIn {
-            goToHome()
-        } else {
-            goToAuth()
-        }
+        navigationController.pushViewController(AddNewDictionaryViewController(), animated: true)
+//        if isLoggedIn {
+//            goToHome()
+//        } else {
+//            goToAuth()
+//        }
     }
     
     func goToAuth() {

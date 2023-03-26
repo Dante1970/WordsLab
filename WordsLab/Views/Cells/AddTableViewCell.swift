@@ -46,7 +46,7 @@ class AddTableViewCell: UITableViewCell {
         
         let padding: CGFloat = 20
         NSLayoutConstraint.activate([
-            addButton.topAnchor.constraint(equalTo: contentView.topAnchor),
+            addButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
             addButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             addButton.heightAnchor.constraint(equalToConstant: 60),
             addButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),

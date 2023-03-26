@@ -25,8 +25,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.recentDictionaryCollactionView.delegate = self
-        mainView.recentDictionaryCollactionView.dataSource = self
+        mainView.recentDictionaryCollectionView.delegate = self
+        mainView.recentDictionaryCollectionView.dataSource = self
     }
     
     deinit {
