@@ -11,8 +11,6 @@ class AddNewDictionaryViewController: UIViewController {
     
     var viewModel: AddNewDictionaryViewModel!
     
-    private let numberOfRows: Int = 2
-    
     override func loadView() {
         self.view = AddNewDictionaryView()
     }
@@ -42,11 +40,16 @@ class AddNewDictionaryViewController: UIViewController {
     @objc private func doneTapped() {
         print("Done!")
     }
+    
+    @objc private func addNewWord() {
+        viewModel.addNewWord()
+        mainView.tableView.reloadData()
+    }
 }
 
 extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return numberOfRows
+        return viewModel.numberOfRows
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -57,8 +60,10 @@ extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSo
         else {
             return UITableViewCell()
         }
+        
+        addCell.addButton.addTarget(self, action: #selector(addNewWord), for: .touchUpInside)
 
-        if indexPath.row == numberOfRows - 1 {
+        if indexPath.row == viewModel.numberOfRows - 1 {
             return addCell
         } else {
             return cell

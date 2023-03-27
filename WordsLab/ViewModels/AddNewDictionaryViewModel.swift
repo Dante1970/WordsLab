@@ -10,4 +10,10 @@ import Foundation
 class AddNewDictionaryViewModel {
     
     weak var coordinator: DictionariesCoordinator!
+    
+    var numberOfRows: Int = 2
+    
+    func addNewWord() {
+        numberOfRows += 1
+    }
 }
