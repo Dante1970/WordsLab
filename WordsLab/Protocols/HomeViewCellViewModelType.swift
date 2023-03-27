@@ -10,6 +10,6 @@ import Foundation
 protocol HomeCellViewModelType: class {
     
     var name: String { get }
-    var folder: String { get }
+    var folder: String? { get }
     var date: String { get }
 }

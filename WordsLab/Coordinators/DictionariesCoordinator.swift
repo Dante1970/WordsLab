@@ -27,6 +27,15 @@ class DictionariesCoordinator: Coordinator {
         navigationController.pushViewController(dictionariesViewController, animated: true)
     }
     
+    func goToAddNewDictionary() {
+        
+        let addNewDictionaryViewController = AddNewDictionaryViewController()
+        let addNewDictionaryViewModel = AddNewDictionaryViewModel()
+        addNewDictionaryViewModel.coordinator = self
+        addNewDictionaryViewController.viewModel = addNewDictionaryViewModel
+        navigationController.pushViewController(addNewDictionaryViewController, animated: true)
+    }
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

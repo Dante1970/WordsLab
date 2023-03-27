@@ -9,6 +9,8 @@ import UIKit
 
 class AddNewDictionaryViewController: UIViewController {
     
+    var viewModel: AddNewDictionaryViewModel!
+    
     private let numberOfRows: Int = 2
     
     override func loadView() {
@@ -27,6 +29,18 @@ class AddNewDictionaryViewController: UIViewController {
         
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
+        
+        addDoneButton()
+    }
+    
+    private func addDoneButton() {
+        let navigationItem = self.navigationItem
+        let item = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneTapped))
+        navigationItem.setRightBarButton(item, animated: true)
+    }
+    
+    @objc private func doneTapped() {
+        print("Done!")
     }
 }
 
@@ -43,21 +57,11 @@ extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSo
         else {
             return UITableViewCell()
         }
-              
-        print(indexPath.row)
 
         if indexPath.row == numberOfRows - 1 {
             return addCell
         } else {
             return cell
         }
-        
-//        guard let cell = cell else { return UITableViewCell() }
-        
-//        return cell
     }
-    
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
 }

@@ -9,6 +9,7 @@ import Foundation
 
 struct Dictionary {
     var name: String
-    var folder: String
+    var folder: String?
     var date: String
+    var wordPairs: [(String, String)]
 }

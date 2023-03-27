@@ -29,6 +29,11 @@ class DictionariesViewController: UIViewController {
         mainView.dictionariesViewTableView.dataSource = self
     }
     
+    @objc private func addNewDictionary() {
+        print("click!")
+        viewModel.coordinator.goToAddNewDictionary()
+    }
+    
     deinit {
         print("DictionariesViewController deinit")
     }
@@ -48,6 +53,8 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
         else {
             return UITableViewCell()
         }
+        
+        addCell.addButton.addTarget(self, action: #selector(addNewDictionary), for: .touchUpInside)
 
         if indexPath.row == 0 {
             return addCell
