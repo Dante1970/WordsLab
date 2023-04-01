@@ -9,7 +9,7 @@ import UIKit
 
 class AddNewDictionaryViewController: UIViewController {
     
-    var viewModel: AddNewDictionaryViewModel!
+    var viewModel: DictionariesViewModel!
     
     override func loadView() {
         self.view = AddNewDictionaryView()
@@ -43,7 +43,7 @@ class AddNewDictionaryViewController: UIViewController {
         
         if name != "" {
             viewModel.doneTapped(name: mainView.nameTF.text!, cells: mainView.tableView.visibleCells)
-            viewModel.coordinator.navigationController.popViewController(animated: true)
+            viewModel.coordinator.goBackToDictionaries()
         } else {
             present(viewModel.alertOk(title: "Error!", message: "Fill in the name field"), animated: true)
         }
@@ -57,7 +57,7 @@ class AddNewDictionaryViewController: UIViewController {
 
 extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows
+        return viewModel.numberOfRowsNewWords
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -71,7 +71,7 @@ extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSo
         
         addCell.addButton.addTarget(self, action: #selector(addNewWord), for: .touchUpInside)
 
-        if indexPath.row == viewModel.numberOfRows - 1 {
+        if indexPath.row == viewModel.numberOfRowsNewWords - 1 {
             return addCell
         } else {
             return cell

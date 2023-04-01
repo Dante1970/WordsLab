@@ -56,7 +56,6 @@
 		BEEDA50629CF20EE00750548 /* AddNewDictionaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA50529CF20EE00750548 /* AddNewDictionaryViewController.swift */; };
 		BEEDA50829CF221500750548 /* AddNewDictionaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA50729CF221500750548 /* AddNewDictionaryView.swift */; };
 		BEEDA51229CF487900750548 /* AddNewDictionaryViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA51129CF487900750548 /* AddNewDictionaryViewTableViewCell.swift */; };
-		BEEDA51629D091AC00750548 /* AddNewDictionaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA51529D091AC00750548 /* AddNewDictionaryViewModel.swift */; };
 		BEEDA51A29D6149500750548 /* WordPairs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEEDA51929D6149500750548 /* WordPairs.swift */; };
 		C0D0424E1B1FE44D05D57191 /* Pods_WordsLab.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */; };
 /* End PBXBuildFile section */
@@ -113,7 +112,6 @@
 		BEEDA50529CF20EE00750548 /* AddNewDictionaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDictionaryViewController.swift; sourceTree = "<group>"; };
 		BEEDA50729CF221500750548 /* AddNewDictionaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDictionaryView.swift; sourceTree = "<group>"; };
 		BEEDA51129CF487900750548 /* AddNewDictionaryViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDictionaryViewTableViewCell.swift; sourceTree = "<group>"; };
-		BEEDA51529D091AC00750548 /* AddNewDictionaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewDictionaryViewModel.swift; sourceTree = "<group>"; };
 		BEEDA51929D6149500750548 /* WordPairs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordPairs.swift; sourceTree = "<group>"; };
 		C14E00B2A87723A9EC39838A /* Pods_WordsLab.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WordsLab.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDCE8B6424CA3B78487DC4B4 /* Pods-WordsLab.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WordsLab.release.xcconfig"; path = "Target Support Files/Pods-WordsLab/Pods-WordsLab.release.xcconfig"; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				BE37866B29A7F31700472C51 /* HomeCellViewModel.swift */,
 				BE37868F29B7BE4100472C51 /* FoldersViewModel.swift */,
 				BE37869129B7BF2C00472C51 /* DictionariesViewModel.swift */,
-				BEEDA51529D091AC00750548 /* AddNewDictionaryViewModel.swift */,
 				BE37869329B7BFDC00472C51 /* ProfileViewModel.swift */,
 				BE37866529A7E84600472C51 /* Models */,
 			);
@@ -459,7 +456,6 @@
 				BE59FE5529A0D0F2006B1B36 /* SignUpViewController.swift in Sources */,
 				BE37868629B7AF6400472C51 /* HomeTabBarCoordinator.swift in Sources */,
 				BE37867B29B12E0C00472C51 /* ProfileView.swift in Sources */,
-				BEEDA51629D091AC00750548 /* AddNewDictionaryViewModel.swift in Sources */,
 				BE59FE51299BEE42006B1B36 /* LoginView.swift in Sources */,
 				BE37869029B7BE4100472C51 /* FoldersViewModel.swift in Sources */,
 				BE37865129A6841400472C51 /* HomeView.swift in Sources */,

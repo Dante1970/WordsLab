@@ -43,4 +43,11 @@ class LocalStorageManager {
         
         return Array(models)
     }
+    
+    func obtainDictionaries() -> [Dictionary] {
+        
+        let models = realm .objects(Dictionary.self)
+        
+        return Array(models)
+    }
 }
