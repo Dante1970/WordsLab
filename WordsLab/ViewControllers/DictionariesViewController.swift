@@ -29,6 +29,17 @@ class DictionariesViewController: UIViewController {
         mainView.dictionariesViewTableView.dataSource = self
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.dictionariesViewTableView.reloadData()
+    }
+
+    
+    @objc private func addNewDictionary() {
+        print("click!")
+        viewModel.coordinator.goToAddNewDictionary()
+    }
+    
     deinit {
         print("DictionariesViewController deinit")
     }
@@ -37,7 +48,8 @@ class DictionariesViewController: UIViewController {
 extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        let numberOfDictionaries = viewModel.dictionaries.count
+        return numberOfDictionaries >= 1 ? numberOfDictionaries + 1 : 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -48,6 +60,8 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
         else {
             return UITableViewCell()
         }
+        
+        addCell.addButton.addTarget(self, action: #selector(addNewDictionary), for: .touchUpInside)
 
         if indexPath.row == 0 {
             return addCell

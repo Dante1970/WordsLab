@@ -12,6 +12,7 @@ class FolderModel: Object {
     @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
     @Persisted var name: String
     @Persisted var ownerId: String
+    @Persisted var dictionaries = List<Dictionary>()
     
     convenience init(name: String, ownerId: String) {
         self.init()

@@ -47,9 +47,7 @@ class FoldersViewController: UIViewController {
 extension FoldersViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         let numberOfFolders = viewModel.folders.count
-        
         return numberOfFolders >= 1 ? numberOfFolders + 1 : 1
     }
     

@@ -14,6 +14,8 @@ class DictionariesCoordinator: Coordinator {
     var children: [Coordinator] = []
     var navigationController: UINavigationController
     
+    lazy var dictionariesViewModel = DictionariesViewModel(coordinator: self)
+    
     func start() {
         goToDictionaries()
     }
@@ -21,10 +23,21 @@ class DictionariesCoordinator: Coordinator {
     private func goToDictionaries() {
         
         let dictionariesViewController = DictionariesViewController()
-        let dictionariesViewModel = DictionariesViewModel()
-        dictionariesViewModel.coordinator = self
+        dictionariesViewModel.dictionaries = LocalStorageManager.shared.obtainDictionaries()
         dictionariesViewController.viewModel = dictionariesViewModel
         navigationController.pushViewController(dictionariesViewController, animated: true)
+    }
+    
+    func goToAddNewDictionary() {
+        
+        let addNewDictionaryViewController = AddNewDictionaryViewController()
+        addNewDictionaryViewController.viewModel = dictionariesViewModel
+        navigationController.pushViewController(addNewDictionaryViewController, animated: true)
+    }
+    
+    func goBackToDictionaries() {
+        
+        navigationController.popViewController(animated: true)
     }
     
     init(navigationController: UINavigationController) {

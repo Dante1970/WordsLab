@@ -21,6 +21,7 @@ class AppCoordinator: Coordinator {
         
         isLoggedIn = AuthManager.shared.isUserLoggedIn()
         
+        navigationController.pushViewController(AddNewDictionaryViewController(), animated: true)
         if isLoggedIn {
             goToHome()
         } else {
