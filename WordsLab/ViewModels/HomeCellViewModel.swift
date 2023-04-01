@@ -14,7 +14,7 @@ class HomeCellViewModel: HomeCellViewModelType {
     var name: String {
         return dictionary.name
     }
-    var folder: String? {
+    var folder: FolderModel? {
         return dictionary.folder
     }
     var date: String {

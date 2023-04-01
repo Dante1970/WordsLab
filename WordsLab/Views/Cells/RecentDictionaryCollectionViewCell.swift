@@ -17,7 +17,7 @@ class RecentDictionaryCollectionViewCell: UICollectionViewCell {
             guard let viewModel = viewModel else { return }
             
             dictionaryName.text = viewModel.name
-            folderLabel.text = viewModel.folder
+            folderLabel.text = viewModel.folder?.name
             dateLabel.text = viewModel.date
         }
     }

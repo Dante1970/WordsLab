@@ -28,6 +28,7 @@ class AddNewDictionaryViewTableViewCell: UITableViewCell {
             attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .medium),
                 NSAttributedString.Key.foregroundColor: BaseColors.gray!])
+        textField.tag = 1
         return textField
     }()
     
@@ -46,6 +47,7 @@ class AddNewDictionaryViewTableViewCell: UITableViewCell {
             attributes: [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17, weight: .medium),
                 NSAttributedString.Key.foregroundColor: BaseColors.gray!])
+        textField.tag = 2
         return textField
     }()
     

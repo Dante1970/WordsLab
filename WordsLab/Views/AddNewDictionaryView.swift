@@ -9,7 +9,7 @@ import UIKit
 
 class AddNewDictionaryView: UIView {
     
-    private let nameTF: UITextField = {
+    let nameTF: UITextField = {
        let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         textField.attributedPlaceholder = NSAttributedString(

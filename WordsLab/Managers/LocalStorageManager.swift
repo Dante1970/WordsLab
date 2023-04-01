@@ -20,6 +20,23 @@ class LocalStorageManager {
         }
     }
     
+    func addDictionary(ownerId: String, name: String, folder: FolderModel?, date: String, wordPairs: [String: String]) {
+        
+        try! realm.write {
+            
+            let dictionary = Dictionary(ownerId: ownerId, name: name, folder: folder, date: date)
+            
+            for wordPair in wordPairs {
+                let wordPairs = WordPairs()
+                wordPairs.word = wordPair.key
+                wordPairs.translation = wordPair.value
+                dictionary.wordPairs.append(wordPairs)
+            }
+
+            realm.add(dictionary)
+        }
+    }
+    
     func obtainFolders() -> [FolderModel] {
         
         let models = realm.objects(FolderModel.self)

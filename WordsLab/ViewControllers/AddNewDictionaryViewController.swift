@@ -38,7 +38,15 @@ class AddNewDictionaryViewController: UIViewController {
     }
     
     @objc private func doneTapped() {
-        print("Done!")
+        
+        let name = mainView.nameTF.text
+        
+        if name != "" {
+            viewModel.doneTapped(name: mainView.nameTF.text!, cells: mainView.tableView.visibleCells)
+            viewModel.coordinator.navigationController.popViewController(animated: true)
+        } else {
+            present(viewModel.alertOk(title: "Error!", message: "Fill in the name field"), animated: true)
+        }
     }
     
     @objc private func addNewWord() {
