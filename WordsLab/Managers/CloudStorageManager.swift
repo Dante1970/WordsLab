@@ -48,4 +48,22 @@ class CloudStorageManager {
             }
         }
     }
+    
+    func addDictionary(name: String, folder: FolderModel?, date: String, wordPairs: [String: String]) {
+        
+        let userUID = AuthManager.shared.getUID()!
+        
+        userCollectionRef.document(userUID).collection("Dictionaries").document(name).setData([
+            "name": name,
+            "folder": folder,
+            "date": date,
+            "wordPairs": wordPairs
+        ]) { err in
+            if let err = err {
+                print("Error writing document \(err)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
 }
