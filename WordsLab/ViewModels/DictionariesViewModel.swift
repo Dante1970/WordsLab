@@ -46,6 +46,7 @@ class DictionariesViewModel {
         
         dictionaries.append(Dictionary(ownerId: appCoordinator.userUID!, name: name, folder: nil, date: "01.01.23"))
         LocalStorageManager.shared.addDictionary(ownerId: appCoordinator.userUID!, name: name, folder: nil, date: "01.01.23", wordPairs: wordPairs)
+        CloudStorageManager.shared.addDictionary(name: name, folder: nil, date: "01.01.23", wordPairs: wordPairs)
     }
     
     func alertOk(title: String, message: String) -> UIAlertController {
