@@ -11,6 +11,16 @@ class DictionaryViewTableViewCell: UITableViewCell {
 
     static let identifier = "DictionaryViewTableViewCell"
     
+    var viewModel: DictionaryTableViewCellViewModel? {
+        willSet(viewModel) {
+            guard let viewModel = viewModel else { return }
+
+            dictionaryName.text = viewModel.name
+            folderLabel.text = viewModel.folder
+            dateLabel.text = viewModel.date
+        }
+    }
+    
     private let mainView: UIView = {
         let view = UIView()
         view.backgroundColor = BaseColors.backgroundForBlocks
@@ -28,7 +38,7 @@ class DictionaryViewTableViewCell: UITableViewCell {
     
     private let folderLabel: UILabel = {
         let label = UILabel()
-        label.text = "Folder 1"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         label.textColor = BaseColors.white
         return label
@@ -36,7 +46,7 @@ class DictionaryViewTableViewCell: UITableViewCell {
     
     private let dictionaryName: UILabel = {
         let label = UILabel()
-        label.text = "Dictionary 1"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 20, weight: .medium)
         label.textColor = BaseColors.white
         return label
@@ -44,7 +54,7 @@ class DictionaryViewTableViewCell: UITableViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "10.12.23"
+        label.text = ""
         label.font = UIFont.systemFont(ofSize: 14, weight: .medium)
         label.textColor = BaseColors.gray
         return label
@@ -56,14 +66,20 @@ class DictionaryViewTableViewCell: UITableViewCell {
         return imageView
     }()
     
+    // MARK: - layoutSubviews
     override func layoutSubviews() {
         super.layoutSubviews()
         
         folderView.applyGradient()
     }
     
+    // MARK: - init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        if folderLabel.text == "" {
+            folderView.layer.opacity = 0
+        }
         
         makeUI()
         setupConstraints()
@@ -73,6 +89,8 @@ class DictionaryViewTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    
+    // MARK: - makeUI
     private func makeUI() {
         
         contentView.backgroundColor = BaseColors.backgroundColor
@@ -85,6 +103,7 @@ class DictionaryViewTableViewCell: UITableViewCell {
         mainView.addSubview(dictionaryImageView)
     }
     
+    // MARK: - setupConstraints
     private func setupConstraints() {
         
         mainView.translatesAutoresizingMaskIntoConstraints = false

@@ -49,6 +49,12 @@ class DictionariesViewModel {
         CloudStorageManager.shared.addDictionary(name: name, folder: nil, date: "01.01.23", wordPairs: wordPairs)
     }
     
+    func cellViewModel(forIndexPath indexPath: Int) -> DictionaryTableViewCellViewModel? {
+        
+        let dictionary = dictionaries[indexPath]
+        return DictionaryTableViewCellViewModel(dictionary: dictionary)
+    }
+    
     func alertOk(title: String, message: String) -> UIAlertController {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)

@@ -33,7 +33,6 @@ class DictionariesViewController: UIViewController {
         super.viewWillAppear(animated)
         mainView.dictionariesViewTableView.reloadData()
     }
-
     
     @objc private func addNewDictionary() {
         print("click!")
@@ -65,8 +64,11 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
 
         if indexPath.row == 0 {
             return addCell
+        } else {
+            let indexPath = indexPath.row - 1
+            let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+            cell.viewModel = cellViewModel
+            return cell
         }
-        
-        return cell
     }
 }
