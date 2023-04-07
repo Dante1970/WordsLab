@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol HomeCellViewModelType: class {
+protocol HomeCellViewModelType: AnyObject {
     
     var name: String { get }
     var folder: FolderModel? { get }
