@@ -35,6 +35,14 @@ class DictionariesCoordinator: Coordinator {
         navigationController.pushViewController(addNewDictionaryViewController, animated: true)
     }
     
+    func goToCards(dictionary: Dictionary) {
+        
+        let cardsViewController = CardsViewController()
+        cardsViewController.title = dictionary.name
+        cardsViewController.viewModel = CardsViewModel(dictionary: dictionary)
+        navigationController.pushViewController(cardsViewController, animated: true)
+    }
+    
     func goBackToDictionaries() {
         
         navigationController.popViewController(animated: true)

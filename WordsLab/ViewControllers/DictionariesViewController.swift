@@ -59,16 +59,23 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
         else {
             return UITableViewCell()
         }
-        
-        addCell.addButton.addTarget(self, action: #selector(addNewDictionary), for: .touchUpInside)
 
         if indexPath.row == 0 {
+            addCell.addButton.addTarget(self, action: #selector(addNewDictionary), for: .touchUpInside)
             return addCell
         } else {
             let indexPath = indexPath.row - 1
-            let cellViewModel = viewModel.cellViewModel(forIndexPath: indexPath)
+            let cellViewModel = viewModel.dictionaryCellViewModel(forIndexPath: indexPath)
             cell.viewModel = cellViewModel
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let _ = tableView.cellForRow(at: indexPath) as? DictionaryViewTableViewCell {
+            let dictionary = viewModel.dictionaries[indexPath.row - 1]
+            viewModel.coordinator.goToCards(dictionary: dictionary)
         }
     }
 }

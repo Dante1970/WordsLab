@@ -9,6 +9,8 @@ import UIKit
 
 class CardsViewController: UIViewController {
     
+    var viewModel: CardsViewModel!
+    
     private var selectCard = 0
     
     override func loadView() {
@@ -35,7 +37,7 @@ class CardsViewController: UIViewController {
 extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.numberOfWords
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -43,6 +45,8 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CardsCollectionViewCell.identifier, for: indexPath) as? CardsCollectionViewCell
         
         guard let cell = cell else { return UICollectionViewCell() }
+        
+        cell.viewModel = viewModel.cardsCellViewModel(forIndexPath: indexPath)
         
         return cell
     }
@@ -56,18 +60,16 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         
-        // Завершить перемещение
+        // 	Finish moving
         targetContentOffset.pointee = scrollView.contentOffset
         
         let currentIndex = mainView.cardsCollectionView.indexPathsForSelectedItems?.first ?? mainView.cardsCollectionView.indexPathsForVisibleItems.first
         
         if velocity.x < 0 {
-            print(velocity.x)
             selectCard -= selectCard > 0 ? 1 : 0
             mainView.cardsCollectionView.scrollToItem(at: IndexPath(item: selectCard, section: currentIndex!.section), at: .centeredHorizontally, animated: true)
         } else {
-            print(velocity.x)
-            selectCard += selectCard < 4 ? 1 : 0 // 4 need to change on words.count
+            selectCard += selectCard < viewModel.numberOfWords - 1 ? 1 : 0
             mainView.cardsCollectionView.scrollToItem(at: IndexPath(item: selectCard, section: currentIndex!.section), at: .centeredHorizontally, animated: true)
         }
     }

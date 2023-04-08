@@ -44,12 +44,13 @@ class DictionariesViewModel {
         
         let appCoordinator = coordinator.parentCoordinator as! AppCoordinator
         
-        dictionaries.append(Dictionary(ownerId: appCoordinator.userUID!, name: name, folder: nil, date: "01.01.23"))
         LocalStorageManager.shared.addDictionary(ownerId: appCoordinator.userUID!, name: name, folder: nil, date: "01.01.23", wordPairs: wordPairs)
+        dictionaries = LocalStorageManager.shared.obtainDictionaries()
+        
         CloudStorageManager.shared.addDictionary(name: name, folder: nil, date: "01.01.23", wordPairs: wordPairs)
     }
     
-    func cellViewModel(forIndexPath indexPath: Int) -> DictionaryTableViewCellViewModel? {
+    func dictionaryCellViewModel(forIndexPath indexPath: Int) -> DictionaryTableViewCellViewModel? {
         
         let dictionary = dictionaries[indexPath]
         return DictionaryTableViewCellViewModel(dictionary: dictionary)

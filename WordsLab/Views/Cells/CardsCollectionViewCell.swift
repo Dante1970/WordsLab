@@ -11,10 +11,15 @@ class CardsCollectionViewCell: UICollectionViewCell {
     
     static let identifier = "CardsCollectionViewCell"
     
-    private var isRotation = false
+    var viewModel: CardsCellViewModelType! {
+        willSet(viewModel) {
+            
+            guard let viewModel = viewModel else { return }
+            self.label.text = viewModel.word
+        }
+    }
     
-    var word = "word"
-    var translation = "перевод"
+    private var isRotation = false
     
     let mainView: UIView = {
         let view = UIView()
@@ -37,8 +42,6 @@ class CardsCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.label.text = word
-        
         makeUI()
         setupConstraints()
     }
@@ -56,7 +59,7 @@ class CardsCollectionViewCell: UICollectionViewCell {
             isRotation = !isRotation
             
             UIView.transition(with: self.mainView, duration: duration, options: .transitionFlipFromLeft, animations: {
-                self.label.text = self.translation
+                self.label.text = self.viewModel.translation
             }, completion: nil)
 
         } else {
@@ -64,7 +67,7 @@ class CardsCollectionViewCell: UICollectionViewCell {
             isRotation = !isRotation
             
             UIView.transition(with: self.mainView, duration: duration, options: .transitionFlipFromLeft, animations: {
-                self.label.text = self.word
+                self.label.text = self.viewModel.word
             }, completion: nil)
         }
     }
