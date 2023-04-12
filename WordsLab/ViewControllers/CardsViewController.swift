@@ -30,6 +30,8 @@ class CardsViewController: UIViewController {
 
         mainView.cardsCollectionView.delegate = self
         mainView.cardsCollectionView.dataSource = self
+        
+        mainView.pageControl.numberOfPages = viewModel.numberOfWords
     }
 }
 
@@ -68,9 +70,11 @@ extension CardsViewController: UICollectionViewDelegate, UICollectionViewDataSou
         if velocity.x < 0 {
             selectCard -= selectCard > 0 ? 1 : 0
             mainView.cardsCollectionView.scrollToItem(at: IndexPath(item: selectCard, section: currentIndex!.section), at: .centeredHorizontally, animated: true)
+            mainView.pageControl.currentPage -= 1
         } else {
             selectCard += selectCard < viewModel.numberOfWords - 1 ? 1 : 0
             mainView.cardsCollectionView.scrollToItem(at: IndexPath(item: selectCard, section: currentIndex!.section), at: .centeredHorizontally, animated: true)
+            mainView.pageControl.currentPage += 1
         }
     }
 }
