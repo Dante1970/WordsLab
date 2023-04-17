@@ -30,6 +30,15 @@ class CardsView: UIView {
         return collectionView
     }()
     
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.numberOfPages = 0
+        pageControl.currentPage = 0
+        pageControl.pageIndicatorTintColor = BaseColors.gray
+        pageControl.currentPageIndicatorTintColor = BaseColors.blue
+        return pageControl
+    }()
+    
     // MARK: - init
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,16 +57,21 @@ class CardsView: UIView {
         self.backgroundColor = BaseColors.backgroundColor
         
         self.addSubview(cardsCollectionView)
+        self.addSubview(pageControl)
     }
     
     private func setupConstraints() {
         cardsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        pageControl.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
-            cardsCollectionView.heightAnchor.constraint(equalToConstant: 500),
+            cardsCollectionView.heightAnchor.constraint(equalToConstant: 400),
             cardsCollectionView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             cardsCollectionView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
-            cardsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor)
+            cardsCollectionView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            
+            pageControl.topAnchor.constraint(equalTo: cardsCollectionView.bottomAnchor, constant: 10),
+            pageControl.centerXAnchor.constraint(equalTo: safeAreaLayoutGuide.centerXAnchor)
         ])
     }
 }

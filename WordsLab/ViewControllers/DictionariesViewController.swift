@@ -35,7 +35,6 @@ class DictionariesViewController: UIViewController {
     }
     
     @objc private func addNewDictionary() {
-        print("click!")
         viewModel.coordinator.goToAddNewDictionary()
     }
     
@@ -67,6 +66,7 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
             let indexPath = indexPath.row - 1
             let cellViewModel = viewModel.dictionaryCellViewModel(forIndexPath: indexPath)
             cell.viewModel = cellViewModel
+            
             return cell
         }
     }
