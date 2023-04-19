@@ -56,6 +56,16 @@ class DictionariesViewModel {
         return DictionaryTableViewCellViewModel(dictionary: dictionary)
     }
     
+    func deleteDataFromStorage(for indexPath: IndexPath) {
+        
+        let index = indexPath.row - 1
+        let dictionary = dictionaries[index]
+        
+        LocalStorageManager.shared.deleteDictionary(dictionary: dictionary)
+        
+        dictionaries.remove(at: index)
+    }
+    
     func alertOk(title: String, message: String) -> UIAlertController {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
