@@ -66,4 +66,20 @@ class CloudStorageManager {
             }
         }
     }
+    
+    func deleteDictionary(dictionaryName: String, completion: @escaping ()->()) {
+        
+        let userUID = AuthManager.shared.getUID()!
+        
+        let dictionaryRef = userCollectionRef.document(userUID).collection("Dictionaries").document(dictionaryName)
+        
+        dictionaryRef.delete() { err in
+            if let err = err {
+                print("Error while deleting: \(err)")
+            } else {
+                completion()
+                print("Dictionary: \(dictionaryName). Deleted successfully!")
+            }
+        }
+    }
 }

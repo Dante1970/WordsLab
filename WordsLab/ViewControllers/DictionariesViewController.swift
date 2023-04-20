@@ -87,6 +87,7 @@ extension DictionariesViewController: CellDelegate {
         
         viewModel.deleteDataFromStorage(for: indexPath)
         
+        mainView.dictionariesViewTableView.deleteRows(at: [indexPath], with: .none)
         mainView.dictionariesViewTableView.reloadData()
     }
 }

@@ -61,7 +61,10 @@ class DictionariesViewModel {
         let index = indexPath.row - 1
         let dictionary = dictionaries[index]
         
-        LocalStorageManager.shared.deleteDictionary(dictionary: dictionary)
+        CloudStorageManager.shared.deleteDictionary(dictionaryName: dictionary.name) {
+            
+            LocalStorageManager.shared.deleteDictionary(dictionary: dictionary)
+        }
         
         dictionaries.remove(at: index)
     }
