@@ -11,6 +11,8 @@ class DictionaryViewTableViewCell: UITableViewCell {
 
     static let identifier = "DictionaryViewTableViewCell"
     
+    weak var delegate: CellDelegate?
+    
     var mainViewTopAnchor: NSLayoutConstraint?
     var mainViewHeightAnchor: NSLayoutConstraint?
     var mainViewLeadingAnchor: NSLayoutConstraint?
@@ -108,6 +110,15 @@ class DictionaryViewTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func deleteButtonTapped() {
+        
+        guard let tableView = self.superview as? UITableView,
+              let indexPath = tableView.indexPath(for: self)
+        else { return }
+        
+        deleteAnimation(indexPath: indexPath)
+    }
+    
     // MARK: - addGesture
     private func addGesture() {
         
@@ -120,12 +131,8 @@ class DictionaryViewTableViewCell: UITableViewCell {
         mainView.addGestureRecognizer(swipeGestureRight)
     }
     
-    @objc private func deleteButtonTapped() {
-        deleteAnimation()
-    }
-    
     // MARK: - Animations
-    private func deleteAnimation() {
+    private func deleteAnimation(indexPath: IndexPath) {
         
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: { [weak self] in
             
@@ -144,7 +151,14 @@ class DictionaryViewTableViewCell: UITableViewCell {
             tableView.beginUpdates()
             tableView.endUpdates()
             
-        }, completion: nil)
+        }, completion: { [weak self] _ in
+            
+            // delete data
+            
+            guard let self = self else { return }
+            
+            self.delegate!.deleteData(at: indexPath)
+        })
     }
     
     @objc private func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {

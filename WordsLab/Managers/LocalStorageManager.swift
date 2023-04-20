@@ -37,6 +37,13 @@ class LocalStorageManager {
         }
     }
     
+    func deleteDictionary(dictionary: Dictionary) {
+        
+        try! realm.write {
+            realm.delete(dictionary)
+        }
+    }
+    
     func obtainFolders() -> [FolderModel] {
         
         let models = realm.objects(FolderModel.self)
@@ -46,7 +53,7 @@ class LocalStorageManager {
     
     func obtainDictionaries() -> [Dictionary] {
         
-        let models = realm .objects(Dictionary.self)
+        let models = realm.objects(Dictionary.self)
         
         return Array(models)
     }

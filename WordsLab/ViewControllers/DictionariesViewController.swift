@@ -65,6 +65,7 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
         } else {
             let indexPath = indexPath.row - 1
             let cellViewModel = viewModel.dictionaryCellViewModel(forIndexPath: indexPath)
+            cell.delegate = self
             cell.viewModel = cellViewModel
             
             return cell
@@ -77,5 +78,16 @@ extension DictionariesViewController: UITableViewDelegate, UITableViewDataSource
             let dictionary = viewModel.dictionaries[indexPath.row - 1]
             viewModel.coordinator.goToCards(dictionary: dictionary)
         }
+    }
+}
+
+extension DictionariesViewController: CellDelegate {
+    
+    func deleteData(at indexPath: IndexPath) {
+        
+        viewModel.deleteDataFromStorage(for: indexPath)
+        
+        mainView.dictionariesViewTableView.deleteRows(at: [indexPath], with: .none)
+        mainView.dictionariesViewTableView.reloadData()
     }
 }

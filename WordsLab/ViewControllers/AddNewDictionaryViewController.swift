@@ -53,6 +53,10 @@ class AddNewDictionaryViewController: UIViewController {
         viewModel.addNewWord()
         mainView.tableView.reloadData()
     }
+    
+    deinit {
+        viewModel.numberOfRowsNewWords = 2
+    }
 }
 
 extension AddNewDictionaryViewController: UITableViewDelegate, UITableViewDataSource {
