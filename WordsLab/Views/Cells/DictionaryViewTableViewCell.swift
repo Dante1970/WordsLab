@@ -18,7 +18,13 @@ class DictionaryViewTableViewCell: UITableViewCell {
     var mainViewLeadingAnchor: NSLayoutConstraint?
     var mainViewTrailingAnchor: NSLayoutConstraint?
     
-    var deleteButtonWidth: NSLayoutConstraint?
+    var deleteButtonWidthAnchor: NSLayoutConstraint?
+    
+    private let mainViewTopMargin: CGFloat = 20
+    private let mainViewHeight: CGFloat = 85
+    
+    private let indentForMainView: CGFloat = 90
+    private let deleteButtonWidth: CGFloat = 50
     
     var viewModel: DictionaryTableViewCellViewModel? {
         willSet(viewModel) {
@@ -134,16 +140,18 @@ class DictionaryViewTableViewCell: UITableViewCell {
     // MARK: - Animations
     private func deleteAnimation(indexPath: IndexPath) {
         
+        let shiftDistance: CGFloat = 300
+        
         UIView.animate(withDuration: 0.3, delay: 0.0, options: .curveEaseIn, animations: { [weak self] in
             
             guard let self = self else { return }
             
             self.mainViewTopAnchor!.constant = 1
             self.mainViewHeightAnchor!.constant = 0
-            self.mainViewLeadingAnchor!.constant -= 300
-            self.mainViewTrailingAnchor!.constant -= 300
+            self.mainViewLeadingAnchor!.constant -= shiftDistance
+            self.mainViewTrailingAnchor!.constant -= shiftDistance
             
-            self.deleteButtonWidth!.constant += 300
+            self.deleteButtonWidthAnchor!.constant += shiftDistance
             
             self.layoutIfNeeded()
             
@@ -153,9 +161,18 @@ class DictionaryViewTableViewCell: UITableViewCell {
             
         }, completion: { [weak self] _ in
             
-            // delete data
-            
             guard let self = self else { return }
+            
+            // revert changes back
+            
+            self.mainViewTopAnchor!.constant = self.mainViewTopMargin
+            self.mainViewHeightAnchor!.constant = self.mainViewHeight
+            self.mainViewLeadingAnchor!.constant += shiftDistance + self.indentForMainView
+            self.mainViewTrailingAnchor!.constant += shiftDistance + self.indentForMainView
+            
+            self.deleteButtonWidthAnchor!.constant -= shiftDistance + self.deleteButtonWidth
+            
+            // delete data
             
             self.delegate!.deleteData(at: indexPath)
         })
@@ -163,8 +180,6 @@ class DictionaryViewTableViewCell: UITableViewCell {
     
     @objc private func handleSwipeGesture(_ gesture: UISwipeGestureRecognizer) {
 
-        let indentForMainView: CGFloat = 90
-        let deleteButtonWidth: CGFloat = 50
         let leadingConstant = self.mainViewLeadingAnchor!.constant
         
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
@@ -173,17 +188,17 @@ class DictionaryViewTableViewCell: UITableViewCell {
                 
             if gesture.direction == .left && leadingConstant == 20 {
                 
-                self.mainViewLeadingAnchor!.constant -= indentForMainView
-                self.mainViewTrailingAnchor!.constant -= indentForMainView
+                self.mainViewLeadingAnchor!.constant -= self.indentForMainView
+                self.mainViewTrailingAnchor!.constant -= self.indentForMainView
                 
-                self.deleteButtonWidth!.constant += deleteButtonWidth
+                self.deleteButtonWidthAnchor!.constant += self.deleteButtonWidth
                 
             } else if gesture.direction == .right && leadingConstant < 20 {
                 
-                self.mainViewLeadingAnchor!.constant += indentForMainView
-                self.mainViewTrailingAnchor!.constant += indentForMainView
+                self.mainViewLeadingAnchor!.constant += self.indentForMainView
+                self.mainViewTrailingAnchor!.constant += self.indentForMainView
                 
-                self.deleteButtonWidth!.constant -= deleteButtonWidth
+                self.deleteButtonWidthAnchor!.constant -= self.deleteButtonWidth
             }
                 
             self.layoutIfNeeded()
@@ -217,12 +232,12 @@ class DictionaryViewTableViewCell: UITableViewCell {
         
         let padding: CGFloat = 20
         
-        mainViewTopAnchor = mainView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20)
-        mainViewHeightAnchor = mainView.heightAnchor.constraint(equalToConstant: 85)
+        mainViewTopAnchor = mainView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: self.mainViewTopMargin)
+        mainViewHeightAnchor = mainView.heightAnchor.constraint(equalToConstant: self.mainViewHeight)
         mainViewLeadingAnchor = mainView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding)
         mainViewTrailingAnchor = mainView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding)
         
-        deleteButtonWidth = deleteButton.widthAnchor.constraint(equalToConstant: 30)
+        deleteButtonWidthAnchor = deleteButton.widthAnchor.constraint(equalToConstant: 30)
         
         NSLayoutConstraint.activate([
             
@@ -233,7 +248,7 @@ class DictionaryViewTableViewCell: UITableViewCell {
             mainView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             deleteButton.topAnchor.constraint(equalTo: mainView.topAnchor),
-            deleteButtonWidth!,
+            deleteButtonWidthAnchor!,
             deleteButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
