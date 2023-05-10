@@ -39,8 +39,15 @@ class LocalStorageManager {
     
     func deleteDictionary(dictionary: Dictionary) {
         
+        let dictionaryToDelete = realm.object(ofType: Dictionary.self, forPrimaryKey: dictionary._id)
+        
+        let wordPairsToDelete = dictionaryToDelete!.wordPairs
+        
         try! realm.write {
-            realm.delete(dictionary)
+            
+            realm.delete(wordPairsToDelete)
+            
+            realm.delete(dictionaryToDelete!)
         }
     }
     

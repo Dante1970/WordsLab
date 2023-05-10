@@ -7,14 +7,6 @@
 
 import RealmSwift
 
-//struct Dictionary {
-//    var name: String
-//    var folder: String?
-//    var date: String
-//    var wordPairs: [(String, String)]
-//}
-
-
 class Dictionary: Object {
     
     @Persisted(primaryKey: true) var _id: ObjectId = ObjectId.generate()
